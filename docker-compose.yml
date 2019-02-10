@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+  node:
+      image: node:alpine
+      volumes:
+        - ./:/app
+      working_dir: /app
+      environment:
+        NODE_ENV: development
+      ports:
+        - 1337:1337
+      command: npm run dev
+      
+  mongo:
+    image: mongo
+    expose:
+      - 27017
+    volumes:
+      - ./data/db:/data/db

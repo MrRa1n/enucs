@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,600");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", Helvetica, sans-serif;
+  background-color: #FBFBFB;
+  color: #484848;
+}
+
+.navbar {
+  width: 100%;
+  height: 70px;
+  background-color: #FFF;
+  border-bottom: 1px solid #E4E4E4;
+  line-height: 70px;
+}
+.navbar .navbar-logo {
+  font-size: 22px;
+}
+.navbar .navbar-logo img {
+  vertical-align: middle;
+}
+.navbar .navbar-links {
+  float: right;
+}
+.navbar .navbar-links a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #484848;
+}
+.navbar .navbar-links a:hover {
+  text-decoration: underline;
+}
+.navbar .navbar-links .navbar-link-item {
+  display: inherit;
+  float: left;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.navbar .navbar-links .navbar-btn {
+  border: 1px solid #2168b9;
+  background-color: #1459a7;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 15px;
+  line-height: 40px;
+  padding: 0;
+}
+.navbar .navbar-links .navbar-btn a {
+  padding: 10px 20px;
+  color: #FFF;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+main {
+  margin-top: 30px;
+}
+main .main-card {
+  width: 100%;
+  height: 350px;
+  padding: 50px;
+  box-sizing: border-box;
+  background: url("../images/home-banner.jpg");
+  border-radius: 15px;
+  display: flex;
+}
+main .main-card .main-card-content {
+  color: #FFF;
+  max-width: 60%;
+  align-self: center;
+}
+main .main-card .main-card-content h1 {
+  font-size: 38px;
+}
+main .upcoming-event-title {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+main .event-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+main .event-container .event-card {
+  width: 230px;
+  min-height: 300px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+  box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+}
+main .event-container .event-card a {
+  text-decoration: none;
+  color: inherit;
+}
+main .event-container .event-card img {
+  border-radius: 15px 15px 0 0;
+}
+main .event-container .event-card .event-card-info {
+  padding: 10px 20px 20px 20px;
+  box-sizing: border-box;
+}
+main .event-container .event-card .event-card-info .event-date {
+  color: #727272;
+  font-size: 14px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #FFF;
+  border: 1px solid #FBFBFB;
+  font-size: 18px;
+  font-weight: 600;
+  color: #484848;
+  display: inline-block;
+}
+.btn-default {
+  color: #FFF;
+  background-color: #1459a7;
+}
+
+label {
+  font-size: 22px;
+}
+
+.form-control {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-size: 22px;
+  width: 100%;
+  color: #727272;
+  border: 1px solid #E4E4E4;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+
+footer {
+  width: 100%;
+  height: 300px;
+  border-top: 1px solid #E4E4E4;
+  background-color: #FFF;
+  margin-top: 50px;
+}
+
+/*# sourceMappingURL=style.css.map */

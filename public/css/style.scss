@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,600');
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Poppins', Helvetica, sans-serif;
+    background-color: #FBFBFB;
+    color: #484848;
+}
+.navbar {
+    width: 100%;
+    height: 70px;
+    background-color: #FFF;
+    border-bottom: 1px solid #E4E4E4;
+    line-height: 70px;
+
+    .navbar-logo {
+        font-size: 22px;
+        img {
+            vertical-align: middle;
+        }
+    }
+
+    .navbar-links {
+        float: right;
+        a {
+            font-weight: 600;
+            text-decoration: none;
+            color: #484848;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        .navbar-link-item {
+            display: inherit;
+            float: left;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .navbar-btn {
+            border: 1px solid #2168b9;
+            background-color: #1459a7;
+            
+            border-radius: 5px;
+            height: 40px;
+            margin-top:15px;
+            line-height: 40px;
+            padding: 0;
+
+            a {
+                padding: 10px 20px;
+                color: #FFF;
+            }
+        }
+    }
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+main {
+    margin-top: 30px;
+    .main-card {
+        width: 100%;
+        height: 350px;
+        padding: 50px;
+        box-sizing: border-box;
+        background: url('../images/home-banner.jpg');
+        border-radius: 15px;
+        display: flex;
+        .main-card-content {
+            color: #FFF;
+            max-width: 60%;
+            align-self: center;
+
+            h1 {
+                font-size: 38px;
+            }
+        }
+    }
+    .upcoming-event-title {
+        margin-top: 100px;
+        margin-bottom: 30px;
+    }
+    .event-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .event-card {
+            width: 230px;
+            min-height: 300px;
+            border-radius: 15px;
+            -webkit-box-shadow: 0px 0px 17px 1px rgba(194,194,194,0.75);
+            -moz-box-shadow: 0px 0px 17px 1px rgba(194,194,194,0.75);
+            box-shadow: 0px 0px 17px 1px rgba(194,194,194,0.75);
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            img {
+                border-radius: 15px 15px 0 0;
+            }
+            .event-card-info {
+                padding: 10px 20px 20px 20px;
+                box-sizing: border-box;
+
+                .event-date {
+                    color: #727272;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #FFF;
+    border: 1px solid #FBFBFB;
+    font-size: 18px;
+    font-weight: 600;
+    color: #484848;
+    display: inline-block;
+    &:hover {
+        
+    }
+}
+
+.btn-default {
+    color: #FFF;
+    background-color: #1459a7;
+}
+
+label {
+    font-size: 22px;
+}
+.form-control {
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-size: 22px;
+    width: 100%;
+    color: #727272;
+    border: 1px solid #E4E4E4;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-top: 5px; 
+}
+footer {
+    width: 100%;
+    height: 300px;
+    border-top: 1px solid #E4E4E4;
+    background-color: #FFF;
+    margin-top: 50px;
+}
