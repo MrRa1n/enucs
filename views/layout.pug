@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="stylesheet", href="/css/style.css")
+        title Napier CompSoc
+    body
+        nav.navbar
+            .container
+                a.navbar-logo(href='#')
+                    img(src="/images/logo.png", alt="ENUCS Logo", height="40")
+                
+                ul.navbar-links
+                    li.navbar-link-item
+                        a(href='#') About
+                    li.navbar-link-item
+                        a(href='#') Events
+                    li.navbar-link-item
+                        a(href='#') Sponsors
+                    li.navbar-link-item.navbar-btn
+                        a(href='#') Join
+        
+        .container
+            main
+                block content
+        
+        footer
