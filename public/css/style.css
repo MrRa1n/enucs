@@ -128,6 +128,19 @@ main .event-container .event-card .event-card-info .event-date {
   background-color: #1459a7;
 }
 
+#form-group {
+  display: inline-block;
+  width: 100%;
+}
+
+.event-time {
+  width: 47.5% !important;
+}
+
+.start {
+  margin-right: 5%;
+}
+
 label {
   font-size: 22px;
 }

@@ -12,8 +12,8 @@ router.get('/add', (req, res) => {
 router.post('/add', (req, res) => {
     let event = new Event();
     event.title = req.body.title;
-    event.date = req.body.date;
     event.location = req.body.location;
+    event.date = req.body.date;
     event.description = req.body.description;
     event.image = 'image';
 

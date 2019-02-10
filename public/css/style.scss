@@ -140,6 +140,16 @@ main {
     background-color: #1459a7;
 }
 
+#form-group {
+    display: inline-block;
+    width: 100%;
+}
+.event-time {
+    width: 47.5%!important;
+}
+.start {
+    margin-right: 5%;
+}
 label {
     font-size: 22px;
 }
@@ -153,6 +163,7 @@ label {
     border-radius: 5px;
     margin-bottom: 15px;
     margin-top: 5px; 
+
 }
 footer {
     width: 100%;

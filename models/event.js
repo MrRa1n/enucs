@@ -5,11 +5,19 @@ let eventSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
+    location: {
+        type: String,
         required: true
     },
-    location: {
+    date: {
+        type: String,
+        required: true
+    },
+    start: {
+        type: String,
+        required: true
+    },
+    end: {
         type: String,
         required: true
     },
