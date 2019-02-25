@@ -51,13 +51,19 @@ app.get('/', (req, res) => {
     
 });
 let about = require('./routes/about');
-app.use('/', about);
+app.use('/about', about);
 
 let events = require('./routes/events');
 app.use('/events', events);
 
 let sponsors = require('./routes/sponsors');
-app.use('/', sponsors);
+app.use('/sponsors', sponsors);
+
+let merch = require('./routes/merch');
+app.use('/merch', merch);
+
+let join = require('./routes/join');
+app.use('/join', join);
 
 app.listen(1337, () => {
     console.log('Listening on port 1337...');

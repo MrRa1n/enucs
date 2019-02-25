@@ -132,14 +132,16 @@ main {
     font-weight: 600;
     color: #484848;
     display: inline-block;
+    text-align: center;
     &:hover {
         
     }
 }
 
 .btn-default {
-    color: #FFF;
+    color: #FFF!important;
     background-color: #1459a7;
+    width: 100px;
 }
 
 #form-group {
@@ -254,4 +256,9 @@ footer {
             }
         }
     }
+}
+
+.join-action-btn {
+    width: 100px;
+    margin: 0 auto;
 }

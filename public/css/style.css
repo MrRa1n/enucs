@@ -127,10 +127,12 @@ main .upcoming-event-title {
   font-weight: 600;
   color: #484848;
   display: inline-block;
+  text-align: center;
 }
 .btn-default {
-  color: #FFF;
+  color: #FFF !important;
   background-color: #1459a7;
+  width: 100px;
 }
 
 #form-group {
@@ -244,6 +246,11 @@ footer .footer-info .contact {
 footer .footer-info .contact a {
   text-decoration: none;
   color: inherit;
+}
+
+.join-action-btn {
+  width: 100px;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=style.css.map */
