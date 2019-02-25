@@ -70,6 +70,9 @@ main .main-card {
   background: url("../images/home-banner.jpg");
   border-radius: 15px;
   display: flex;
+  -webkit-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+  box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
 }
 main .main-card .main-card-content {
   color: #FFF;
@@ -83,31 +86,33 @@ main .upcoming-event-title {
   margin-top: 100px;
   margin-bottom: 30px;
 }
-main .event-container {
+
+.event-container {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
-main .event-container .event-card {
+.event-container .event-card {
   width: 230px;
   min-height: 300px;
+  margin-right: 20px;
   border-radius: 15px;
+  margin-bottom: 25px;
   -webkit-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
   -moz-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
   box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
 }
-main .event-container .event-card a {
+.event-container .event-card a {
   text-decoration: none;
   color: inherit;
 }
-main .event-container .event-card img {
+.event-container .event-card img {
   border-radius: 15px 15px 0 0;
 }
-main .event-container .event-card .event-card-info {
+.event-container .event-card .event-card-info {
   padding: 10px 20px 20px 20px;
   box-sizing: border-box;
 }
-main .event-container .event-card .event-card-info .event-date {
+.event-container .event-card .event-card-info .event-date {
   color: #727272;
   font-size: 14px;
 }
@@ -157,12 +162,88 @@ label {
   margin-top: 5px;
 }
 
+.heading-card {
+  width: 100%;
+  height: 150px;
+  padding: 50px;
+  box-sizing: border-box;
+  background: url("../images/home-banner.jpg");
+  background-position-y: -50px;
+  border-radius: 15px;
+  display: flex;
+  margin-bottom: 50px;
+  -webkit-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+  box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+}
+.heading-card .heading-card-content {
+  color: #FFF;
+  max-width: 60%;
+  align-self: center;
+}
+.heading-card .heading-card-content h1 {
+  font-size: 38px;
+}
+
+.body-text {
+  min-height: 400px;
+  width: 70%;
+  font-size: 18px;
+  margin: 0 auto;
+  line-height: 34px;
+}
+.body-text ul.about-aims {
+  padding-left: 50px;
+}
+.body-text p {
+  margin-top: 20px;
+}
+.body-text a {
+  font-weight: 600;
+  color: inherit;
+}
+
+.committee {
+  display: flex;
+}
+.committee .committee-card {
+  width: 33%;
+  text-align: center;
+  margin-top: 20px;
+}
+.committee .committee-card img {
+  border-radius: 100px;
+}
+.committee .committee-card p {
+  margin-top: 0;
+  font-style: italic;
+}
+
 footer {
   width: 100%;
-  height: 300px;
+  height: 200px;
   border-top: 1px solid #E4E4E4;
   background-color: #FFF;
   margin-top: 50px;
+}
+footer .footer-info {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 25px 0;
+  box-sizing: border-box;
+  display: flex;
+}
+footer .footer-info .sponsor {
+  width: 50%;
+  text-align: left;
+}
+footer .footer-info .contact {
+  width: 50%;
+  text-align: right;
+}
+footer .footer-info .contact a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /*# sourceMappingURL=style.css.map */

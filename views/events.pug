@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .heading-card
+        .heading-card-content 
+            h1 Events
+
+    .event-container
+        each event, i in events
+            .event-card
+                a(href="#")
+                    img(src='/images/file.png', alt="", srcset="", width="230")
+                    .event-card-info
+                        h2= event.title
+                        p.event-date= event.date
+                        p.event-time #{event.start} - #{event.end}
+                        p.event-location= event.location
+        

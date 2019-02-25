@@ -16,9 +16,9 @@ db.on('error', (err) => {
     console.log(err);
 });
 
-let Event = require('./models/event');
-
 const app = express();
+
+let Event = require('./models/event');
 
 // Body Parser Middleware
 // Parse application/x-www-form-urlencoded
@@ -36,6 +36,8 @@ app.set('view engine', 'pug');
 // Express Validator Middleware
 app.use(expressValidator());
 
+
+
 app.get('/', (req, res) => {
     Event.find({}, (err, events) => {
         if (err) {
@@ -48,9 +50,14 @@ app.get('/', (req, res) => {
     });
     
 });
+let about = require('./routes/about');
+app.use('/', about);
 
 let events = require('./routes/events');
 app.use('/events', events);
+
+let sponsors = require('./routes/sponsors');
+app.use('/', sponsors);
 
 app.listen(1337, () => {
     console.log('Listening on port 1337...');

@@ -6,17 +6,19 @@ block content
             h1 We've got some awesome events lined up
             br
             a.btn(href='#') Find out more
-    
-    
 
     h2.upcoming-event-title Upcoming events
     .event-container
+        - var n = 0;
+
         each event, i in events
-            .event-card
-                a(href="#")
-                    img(src=" https://via.placeholder.com/230x150", alt="", srcset="")
-                    .event-card-info
-                        h2= event.title
-                        p.event-date= event.date
-                        p.event-time 17:00 - 18:00
-                        p.event-location= event.location
+            if i < 4
+                .event-card
+                    a(href="#")
+                        img(src='/images/file.png', alt="", srcset="", width="230")
+                        .event-card-info
+                            h2= event.title
+                            p.event-date= event.date
+                            p.event-time #{event.start} - #{event.end}
+                            p.event-location= event.location
+            

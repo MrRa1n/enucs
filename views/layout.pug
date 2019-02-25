@@ -5,20 +5,23 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         link(rel="stylesheet", href="/css/style.css")
-        title Napier CompSoc
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous")
+        title Napier Computing Society
     body
         nav.navbar
             .container
-                a.navbar-logo(href='#')
+                a.navbar-logo(href='/')
                     img(src="/images/logo.png", alt="ENUCS Logo", height="40")
                 
                 ul.navbar-links
                     li.navbar-link-item
-                        a(href='#') About
+                        a(href='/about') About
                     li.navbar-link-item
-                        a(href='#') Events
+                        a(href='/events') Events
                     li.navbar-link-item
-                        a(href='#') Sponsors
+                        a(href='/sponsors') Sponsors
+                    li.navbar-link-item
+                        a(href='/merch') Merch
                     li.navbar-link-item.navbar-btn
                         a(href='#') Join
         
@@ -27,3 +30,18 @@ html(lang="en")
                 block content
         
         footer
+            .footer-info
+                .sponsor
+                    h3 Proudly sponsored by:
+                    br
+                    img(src="/images/blackrock.png", alt="BlackRock Logo", width="250")
+                .contact
+                    h3 Find us:
+                    br
+                    a(href="#", target="_blank", rel="external")
+                        i.fab.fa-slack.fa-3x &nbsp;
+                    a(href="#", target="_blank", rel="external")
+                        i.fab.fa-facebook-square.fa-3x &nbsp;
+                    a(href="#", target="_blank", rel="external")
+                        i.fab.fa-twitter-square.fa-3x
+
