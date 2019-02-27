@@ -36,8 +36,6 @@ app.set('view engine', 'pug');
 // Express Validator Middleware
 app.use(expressValidator());
 
-
-
 app.get('/', (req, res) => {
     Event.find({}, (err, events) => {
         if (err) {
@@ -50,6 +48,7 @@ app.get('/', (req, res) => {
     });
     
 });
+
 let about = require('./routes/about');
 app.use('/about', about);
 
@@ -64,6 +63,10 @@ app.use('/merch', merch);
 
 let join = require('./routes/join');
 app.use('/join', join);
+
+// Backend
+let users = require('./routes/users');
+app.use('/users', users);
 
 app.listen(1337, () => {
     console.log('Listening on port 1337...');
