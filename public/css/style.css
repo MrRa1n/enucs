@@ -43,6 +43,7 @@ body {
 .navbar .navbar-links .navbar-btn {
   border: 1px solid #2168b9;
   background-color: #1459a7;
+  margin-left: 10px;
   border-radius: 5px;
   height: 40px;
   margin-top: 15px;
@@ -136,10 +137,10 @@ main .upcoming-event-title {
 .btn-default {
   color: #FFF !important;
   background-color: #1459a7;
-  width: 100px;
+  min-width: 100px;
 }
 
-#form-group {
+.form-group {
   display: inline-block;
   width: 100%;
 }
@@ -166,6 +167,7 @@ label {
   border-radius: 5px;
   margin-bottom: 15px;
   margin-top: 5px;
+  font-family: inherit;
 }
 
 .about {

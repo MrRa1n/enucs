@@ -4,31 +4,31 @@ block content
     h1= title
     br
     form(method='POST', action='/events/add')
-        #form-group
+        .form-group
             label Title:
             br
             input.form-control(name='title', type='text')
-        #form-group
+        .form-group
             label Location:
             br
             input.form-control(name='location', type='text', placeholder='e.g. C28, Merchiston')
-        #form-group
+        .form-group
             label Date:
             br
             input.form-control(name='date', type='text', placeholder='e.g. Wednesday 5 February')
-        #form-group.event-time.start
+        .form-group.event-time.start
             label Start:
             br
             input.form-control(name='start', type='text', placeholder='e.g. 17:00')
-        #form-group.event-time
+        .form-group.event-time
             label End:
             br
             input.form-control(name='end', type='text', placeholder='e.g. 18:00')
-        #form-group
+        .form-group
             label Event description:
             br
             textarea.form-control(name='description', type='text')
-        #form-group
+        .form-group
             label Event image upload:
             br
             input.form-control(name='image', type='file')
