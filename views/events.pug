@@ -1,15 +1,17 @@
 extends layout
 
 block content
-    .heading-card
+    .heading-card.events
         .heading-card-content 
             h1 Events
-
+    
+    h2 Upcoming events
+    br
     .event-container
         each event, i in events
             .event-card
                 a(href="#")
-                    img(src='/images/file.png', alt="", srcset="", width="230")
+                    img(src='/images/file.png', alt="", srcset="")
                     .event-card-info
                         h2= event.title
                         p.event-date= event.date
