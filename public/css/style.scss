@@ -39,14 +39,14 @@ body {
             box-sizing: border-box;
         }
         .navbar-btn {
-            border: 1px solid #2168b9;
-            background-color: #1459a7;
+            background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
             margin-left: 10px;
             border-radius: 5px;
             height: 40px;
             margin-top:15px;
             line-height: 40px;
             padding: 0;
+            box-shadow: 0px 0px 5px 1px rgba(185, 185, 185, 0.75);
 
             a {
                 padding: 10px 20px;
@@ -131,12 +131,13 @@ main {
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #FFF;
-    border: 1px solid #FBFBFB;
     font-size: 18px;
     font-weight: 600;
     color: #484848;
     display: inline-block;
     text-align: center;
+    border: none;
+    box-shadow: 0px 0px 5px 1px rgba(185, 185, 185, 0.75);
     &:hover {
         
     }
@@ -144,8 +145,8 @@ main {
 
 .btn-default {
     color: #FFF!important;
-    background-color: #1459a7;
     min-width: 100px;
+    background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
 }
 
 .form-group {
