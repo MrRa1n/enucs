@@ -140,6 +140,10 @@ main .upcoming-event-title {
   border: none;
   box-shadow: 0px 0px 5px 1px rgba(185, 185, 185, 0.75);
 }
+.btn:hover {
+  cursor: pointer;
+}
+
 .btn-default {
   color: #FFF !important;
   min-width: 100px;
