@@ -11,7 +11,7 @@ block content
         each event, i in events
             .event-card
                 a(href="#")
-                    img(src='/images/file.png', alt="", srcset="")
+                    img(src='/images/events/' + event.image, alt="", srcset="")
                     .event-card-info
                         h2= event.title
                         p.event-date= event.date
