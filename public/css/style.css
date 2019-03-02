@@ -149,6 +149,9 @@ main .upcoming-event-title {
   min-width: 100px;
   background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
 }
+.btn-default:hover {
+  background: #27a09e;
+}
 
 .form-group {
   display: inline-block;

@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const config = require('./config/database');
 
 mongoose.connect(config.database, { useNewUrlParser: true });
@@ -35,6 +36,17 @@ app.set('view engine', 'pug');
 
 // Express Validator Middleware
 app.use(expressValidator());
+
+// Passport Config
+require('./config/passport')(passport);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req, res, next) {
+    res.locals.user = req.user || null;
+    next();
+});
 
 app.get('/', (req, res) => {
     Event.find({}, (err, events) => {

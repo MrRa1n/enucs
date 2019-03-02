@@ -66,6 +66,15 @@ router.get('/login', (req, res) => {
     });
 });
 
+// Login process
+router.post('/login', function(req, res, next) {
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/users/login',
+        failureFlash: true
+    })(req, res, next);
+});
+
 
 
 module.exports = router;
