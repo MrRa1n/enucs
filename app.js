@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const config = require('./config/database');
 
 mongoose.connect(config.database, { useNewUrlParser: true });
@@ -36,7 +37,16 @@ app.set('view engine', 'pug');
 // Express Validator Middleware
 app.use(expressValidator());
 
+// Passport Config
+require('./config/passport')(passport);
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req, res, next) {
+    res.locals.user = req.user || null;
+    next();
+});
 
 app.get('/', (req, res) => {
     Event.find({}, (err, events) => {
@@ -50,6 +60,7 @@ app.get('/', (req, res) => {
     });
     
 });
+
 let about = require('./routes/about');
 app.use('/about', about);
 
@@ -64,6 +75,10 @@ app.use('/merch', merch);
 
 let join = require('./routes/join');
 app.use('/join', join);
+
+// Backend
+let users = require('./routes/users');
+app.use('/users', users);
 
 app.listen(1337, () => {
     console.log('Listening on port 1337...');

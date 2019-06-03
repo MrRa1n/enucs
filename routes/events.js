@@ -56,6 +56,12 @@ router.post('/add', upload.single('image'), (req, res, next) => {
         return;
     }
 
+    if (req.body.title.length > 30 ||
+        !req.body.date.match(/^(\s*(Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)\s*)?(0?[1-9]|[1-2][0-9]|3[01])\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(19[0-9]{2}|[2-9][0-9]{3}|[0-9]{2})/g)) {
+            console.log('Date is fucked mate');
+            return;
+        }
+
     let event = new Event();
     event.title = req.body.title;
     event.location = req.body.location;

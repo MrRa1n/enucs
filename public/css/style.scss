@@ -39,14 +39,14 @@ body {
             box-sizing: border-box;
         }
         .navbar-btn {
-            border: 1px solid #2168b9;
-            background-color: #1459a7;
+            background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
             margin-left: 10px;
             border-radius: 5px;
             height: 40px;
             margin-top:15px;
             line-height: 40px;
             padding: 0;
+            box-shadow: 0px 0px 5px 1px rgba(185, 185, 185, 0.75);
 
             a {
                 padding: 10px 20px;
@@ -99,12 +99,18 @@ main {
         margin-right: 20px;
         border-radius: 15px;
         margin-bottom: 25px;
-        -webkit-box-shadow: 0px 0px 17px 1px rgba(194,194,194,0.75);
-        -moz-box-shadow: 0px 0px 17px 1px rgba(194,194,194,0.75);
-        box-shadow: 0px 0px 17px 1px rgba(194,194,194,0.75);
+        -webkit-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
+        -moz-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
+        box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
 
         &:nth-child(3n) {
             margin-right: 0;
+        }
+
+        &:hover {
+            -webkit-transform: scale(1.03) translateZ(0);
+            transform: scale(1.03) translateZ(0);
+            transition: 0.35s transform, 0.35s -webkit-transform;
         }
         a {
             text-decoration: none;
@@ -131,21 +137,25 @@ main {
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #FFF;
-    border: 1px solid #FBFBFB;
     font-size: 18px;
     font-weight: 600;
     color: #484848;
     display: inline-block;
     text-align: center;
+    border: none;
+    box-shadow: 0px 0px 5px 1px rgba(185, 185, 185, 0.75);
     &:hover {
-        
+        cursor: pointer;
     }
 }
 
 .btn-default {
     color: #FFF!important;
-    background-color: #1459a7;
     min-width: 100px;
+    background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+    &:hover {
+        background: #27a09e;
+    }
 }
 
 .form-group {
@@ -198,9 +208,9 @@ label {
     border-radius: 15px;
     display: flex;
     margin-bottom: 50px;
-    -webkit-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
-    -moz-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
-    box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
     .heading-card-content {
         color: #FFF;
         max-width: 60%;
@@ -217,7 +227,7 @@ label {
     width: 70%;
     font-size: 18px;
     margin: 0 auto;
-    line-height: 34px;
+    line-height: 2em;
 
     ul.about-aims {
         padding-left: 50px;
@@ -253,6 +263,7 @@ footer {
     border-top: 1px solid #E4E4E4;
     background-color: #FFF;
     margin-top: 50px;
+
 
     .footer-info {
         width: 1000px;
