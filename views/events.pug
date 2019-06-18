@@ -14,7 +14,7 @@ block content
                     img(src='/images/events/' + event.image, alt="", srcset="")
                     .event-card-info
                         h2= event.title
-                        p.event-date= event.date
+                        p.event-date= event.date.toDateString()
                         p.event-time #{event.start} - #{event.end}
                         p.event-location= event.location
         
