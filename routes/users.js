@@ -12,52 +12,47 @@ router.get('/register', (req, res) => {
     });
 });
 
-// Register Process
-router.post('/register', function(req, res) {
-    const name = req.body.name;
-    const email = req.body.email;
-    const username = req.body.username;
-    const password = req.body.password;
-    const password2 = req.body.password2;
-
-    req.checkBody('name', 'Name is required').notEmpty();
-    req.checkBody('email', 'Email is required').notEmpty();
-    req.checkBody('email', 'Email is invalid').isEmail();
-    req.checkBody('username', 'Username is required').notEmpty();
-    req.checkBody('password', 'Password is required').notEmpty();
-    req.checkBody('password2', 'Passwords do not match').equals(password2);
-
-    let errors = req.validationErrors();
-
-    if (errors) {
-        res.render('register', {
-            errors: errors
-        });
-    } else {
-        let newUser = new User({
+function register(name, email, password) {
+    return new Promise((resolve, reject) => {
+        let user = new User({
             name: name,
             email: email,
-            username: username,
             password: password
         });
 
-        bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(newUser.password, salt, function(err, hash) {
+        bcrypt.hash(newUser.password, 10, function(err, hash) {
+            if (err) {
+                reject(err);
+            }
+            user.password = hash;
+            user.save((err) => {
                 if (err) {
-                    console.log(err);
+                    reject(err);
+                } else {
+                    resolve();
                 }
-                newUser.password = hash;
-                newUser.save(function(err) {
-                    if (err) {
-                        console.log(err);
-                        return;
-                    } else {
-                        res.redirect('/users/login');
-                    }
-                });
             });
         });
-    }
+       
+    });
+}
+
+// Register Process
+router.post('/register', (req, res) => {
+    // TODO: Validate user input
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const password2 = req.body.password2;
+
+    register(name, email, password)
+        .then(res.redirect('/users/login'))
+        .catch((err) => {
+            res.render('register', {
+                errors: err
+            });
+        });
+    
 });
 
 router.get('/login', (req, res) => {
@@ -67,14 +62,12 @@ router.get('/login', (req, res) => {
 });
 
 // Login process
-router.post('/login', function(req, res, next) {
+router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);
 });
-
-
 
 module.exports = router;
