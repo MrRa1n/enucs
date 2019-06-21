@@ -41,7 +41,7 @@ body {
   box-sizing: border-box;
 }
 .navbar .navbar-links .navbar-btn {
-  background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+  background: linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   margin-left: 10px;
   border-radius: 5px;
   height: 40px;
@@ -147,7 +147,7 @@ main .upcoming-event-title {
 .btn-default {
   color: #FFF !important;
   min-width: 100px;
-  background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+  background: linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
 }
 .btn-default:hover {
   background: #27a09e;
