@@ -12,14 +12,20 @@ html(lang="en")
             .container
                 a.navbar-logo(href='/')
                     img(src="/images/logo.png", alt="ENUCS Logo", height="40")
-                
+                a.fas.fa-bars.nav-toggle
                 ul.navbar-links
                     li.navbar-link-item
                         a(href='/about') About
+                        //- .dropdown(style='float:left;')
+                        //-     a(href='/about').dropbtn About
+                        //-     .dropdown-content
+                        //-         a(href='#') Blog
+                        //-         a(href='#') Community
+                        //-         a(href='#') Members
                     li.navbar-link-item
                         a(href='/events') Events
                     li.navbar-link-item
-                        a(href='/sponsors') Sponsors
+                        a(href='/partners') Partners
                     li.navbar-link-item
                         a(href='/merch') Merch
                     li.navbar-link-item.navbar-btn
@@ -32,16 +38,15 @@ html(lang="en")
         footer
             .footer-info
                 .sponsor
-                    h3 Proudly sponsored by:
-                    br
-                    img(src="/images/blackrock.png", alt="BlackRock Logo", width="250")
+                    img(src="/images/napier.jpg", alt="Edinburgh Napier University", height="75", style="margin-top:25px")
+
                 .contact
                     h3 Find us:
                     br
-                    a(href="#", target="_blank", rel="external")
-                        i.fab.fa-slack.fa-3x &nbsp;
-                    a(href="#", target="_blank", rel="external")
+                    a(href="https://discord.gg/hnh3fFq", target="_blank", rel="external")
+                        i.fab.fa-discord.fa-3x &nbsp;
+                    a(href="https://www.facebook.com/enucs", target="_blank", rel="external")
                         i.fab.fa-facebook-square.fa-3x &nbsp;
-                    a(href="#", target="_blank", rel="external")
+                    a(href="https://twitter.com/enucs", target="_blank", rel="external")
                         i.fab.fa-twitter-square.fa-3x
 

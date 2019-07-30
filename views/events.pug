@@ -8,13 +8,16 @@ block content
     h2 Upcoming events
     br
     .event-container
-        each event, i in events
-            .event-card
-                a(href="#")
-                    img(src='/images/events/' + event.image, alt="", srcset="")
-                    .event-card-info
-                        h2= event.title
-                        p.event-date= event.date
-                        p.event-time #{event.start} - #{event.end}
-                        p.event-location= event.location
-        
+        if !events
+            div(style='width:400px;margin: 0 auto;text-align:center;') Check back soon for more upcoming events
+        else
+            each event, i in events
+                .event-card
+                    a(href="#")
+                        img(src='/images/events/' + event.image, alt="", srcset="")
+                        .event-card-info
+                            h2= event.title
+                            p.event-date= event.date
+                            p.event-time #{event.start} - #{event.end}
+                            p.event-location= event.location
+            

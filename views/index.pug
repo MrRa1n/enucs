@@ -5,20 +5,23 @@ block content
         .main-card-content 
             h1 We've got some awesome events lined up
             br
-            a.btn(href='#') Find out more
-            
+            a.btn(href='/events') Find out more
+    
+    h2.social-feed-title Twitter
+    p Tweets from ENUCS Twitter feed will appear here
     h2.upcoming-event-title Upcoming events
     .event-container
-        - var n = 0;
-
-        each event, i in events
-            if i < 3
-                .event-card
-                    a(href="#")
-                        img(src='/images/events/' + event.image, alt="", srcset="")
-                        .event-card-info
-                            h2= event.title
-                            p.event-date= event.date
-                            p.event-time #{event.start} - #{event.end}
-                            p.event-location= event.location
+        if !events
+            p Check back soon for more upcoming events
+        else
+            each event, i in events
+                if i < 3
+                    .event-card
+                        a(href="#")
+                            img(src='/images/events/' + event.image, alt="", srcset="")
+                            .event-card-info
+                                h2= event.title
+                                p.event-date= event.date
+                                p.event-time #{event.start} - #{event.end}
+                                p.event-location= event.location
             
