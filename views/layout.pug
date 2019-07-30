@@ -12,7 +12,8 @@ html(lang="en")
             .container
                 a.navbar-logo(href='/')
                     img(src="/images/logo.png", alt="ENUCS Logo", height="40")
-                a.fas.fa-bars.nav-toggle
+                input(type="checkbox", id="menu")
+                label(for="menu").fas.fa-bars.nav-toggle
                 ul.navbar-links
                     li.navbar-link-item
                         a(href='/about') About

@@ -365,17 +365,20 @@ footer .footer-info .contact a {
     display: inline-block !important;
   }
 
+  input#menu {
+    display: none;
+  }
+
   .navbar-links {
     position: absolute;
     z-index: 100;
-    float: none;
-    width: 80%;
     background-color: white !important;
     border-radius: 0px 0px 5px 5px;
     width: 100vw !important;
     left: 0 !important;
     top: 70px;
-    display: none;
+    max-height: 0;
+    overflow: hidden;
   }
   .navbar-links a {
     font-weight: 600;
@@ -395,18 +398,19 @@ footer .footer-info .contact a {
   .navbar-links .navbar-btn {
     background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
     margin-left: 0px !important;
-    border-radius: 5px;
-    height: 40px;
-    margin-top: 15px;
-    line-height: 40px;
-    padding: 0;
-    box-shadow: 0px 0px 5px 1px rgba(185, 185, 185, 0.75);
+    border-radius: 0px !important;
+    height: 60px;
   }
-  .navbar-links .navbar-btn a {
-    padding: 10px 20px;
-    color: #FFF;
+
+  input:checked ~ .navbar-links {
+    max-height: 100%;
   }
 }
 /* Desktop Styles */
+@media only screen and (min-width: 1001px) {
+  input#menu {
+    display: none;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
