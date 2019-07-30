@@ -2,24 +2,15 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const config = require('./config/database');
-
-mongoose.connect(config.database, { useNewUrlParser: true });
-let db = mongoose.connection;
-
-db.once('open', () => {
-    console.log('Connected to MongoDB');
-});
-
-db.on('error', (err) => {
-    console.log(err);
-});
+const db = require('./config/databaseSetup');
+const logger = require('morgan');
 
 const app = express();
 
-let Event = require('./models/event');
+db.init();
+
+/** Logger for HTTP requests */
+app.use(logger('dev'));
 
 // Body Parser Middleware
 // Parse application/x-www-form-urlencoded
@@ -37,47 +28,36 @@ app.set('view engine', 'pug');
 // Express Validator Middleware
 app.use(expressValidator());
 
-// Passport Config
-require('./config/passport')(passport);
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.get('*', function(req, res, next) {
-    res.locals.user = req.user || null;
-    next();
-});
-
+/** Index page */
+// TODO: Add query to fetch most recent upcoming events
 app.get('/', (req, res) => {
-    Event.find({}, (err, events) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('index', {
-                events: events
-            });
-        }
+    res.render('index', {
+        events: null
     });
-    
 });
 
-let about = require('./routes/about');
+/** About Us */
+const about = require('./routes/about');
 app.use('/about', about);
 
-let events = require('./routes/events');
+/** Events */
+const events = require('./routes/events');
 app.use('/events', events);
 
-let sponsors = require('./routes/sponsors');
-app.use('/sponsors', sponsors);
+/** Sponsors */
+const partners = require('./routes/partners');
+app.use('/partners', partners);
 
-let merch = require('./routes/merch');
+/** Merchandise */
+const merch = require('./routes/merch');
 app.use('/merch', merch);
 
-let join = require('./routes/join');
+/** Join Us */
+const join = require('./routes/join');
 app.use('/join', join);
 
-// Backend
-let users = require('./routes/users');
+/** Users */
+const users = require('./routes/users');
 app.use('/users', users);
 
 app.listen(1337, () => {

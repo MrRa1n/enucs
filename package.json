@@ -32,6 +32,7 @@
     "sqlite3": "^4.0.9"
   },
   "devDependencies": {
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.1"
   }
 }
