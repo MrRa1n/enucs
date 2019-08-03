@@ -13,11 +13,12 @@ block content
         else
             each event, i in events
                 .event-card
-                    a(href="#")
-                        img(src='/images/events/' + event.image, alt="", srcset="")
+                    a(href='#')
+                        img(src='/images/events/' + event.image, alt=event.title + ' image')
                         .event-card-info
                             h2= event.title
                             p.event-date= event.date
                             p.event-time #{event.start} - #{event.end}
                             p.event-location= event.location
             
+

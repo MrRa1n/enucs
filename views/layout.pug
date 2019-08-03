@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-html(lang="en")
+html(lang='en')
     head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        link(rel="stylesheet", href="/css/style.css")
-        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous")
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible', content='ie=edge')
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous')
         title Napier Computing Society
+
+        block extraHead
     body
         nav.navbar
             .container
                 a.navbar-logo(href='/')
-                    img(src="/images/logo.png", alt="ENUCS Logo", height="40")
-                input(type="checkbox", id="menu")
-                label(for="menu").fas.fa-bars.nav-toggle
+                    img(src='/images/logo.png', alt='ENUCS Logo', height='40')
+                input(type='checkbox', id='menu')
+                label(for='menu').fas.fa-bars.nav-toggle
                 ul.navbar-links
                     li.navbar-link-item
                         a(href='/about') About
-                        //- .dropdown(style='float:left;')
-                        //-     a(href='/about').dropbtn About
-                        //-     .dropdown-content
-                        //-         a(href='#') Blog
-                        //-         a(href='#') Community
-                        //-         a(href='#') Members
                     li.navbar-link-item
                         a(href='/events') Events
                     li.navbar-link-item
@@ -38,16 +34,17 @@ html(lang="en")
         
         footer
             .footer-info
-                .sponsor
-                    img(src="/images/napier.jpg", alt="Edinburgh Napier University", height="75", style="margin-top:25px")
+                .content-left
+                    img(src='/images/napier.jpg', alt='Edinburgh Napier University', height='75', style='margin-top:25px')
 
                 .contact
                     h3 Find us:
                     br
-                    a(href="https://discord.gg/hnh3fFq", target="_blank", rel="external")
+                    a(href='https://discord.gg/hnh3fFq', target='_blank', rel='external')
                         i.fab.fa-discord.fa-3x &nbsp;
-                    a(href="https://www.facebook.com/enucs", target="_blank", rel="external")
+                    a(href='https://www.facebook.com/enucs', target='_blank', rel='external')
                         i.fab.fa-facebook-square.fa-3x &nbsp;
-                    a(href="https://twitter.com/enucs", target="_blank", rel="external")
+                    a(href='https://twitter.com/enucs', target='_blank', rel='external')
                         i.fab.fa-twitter-square.fa-3x
 
+        block scripts
