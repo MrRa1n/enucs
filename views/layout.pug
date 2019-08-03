@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-html(lang="en")
+html(lang='en')
     head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        link(rel="stylesheet", href="/css/style.css")
-        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous")
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible', content='ie=edge')
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous')
         title Napier Computing Society
 
         block extraHead
@@ -13,15 +13,16 @@ html(lang="en")
         nav.navbar
             .container
                 a.navbar-logo(href='/')
-                    img(src="/images/logo.png", alt="ENUCS Logo", height="40")
-                
+                    img(src='/images/logo.png', alt='ENUCS Logo', height='40')
+                input(type='checkbox', id='menu')
+                label(for='menu').fas.fa-bars.nav-toggle
                 ul.navbar-links
                     li.navbar-link-item
                         a(href='/about') About
                     li.navbar-link-item
                         a(href='/events') Events
                     li.navbar-link-item
-                        a(href='/sponsors') Sponsors
+                        a(href='/partners') Partners
                     li.navbar-link-item
                         a(href='/merch') Merch
                     li.navbar-link-item.navbar-btn
@@ -33,18 +34,17 @@ html(lang="en")
         
         footer
             .footer-info
-                .sponsor
-                    h3 Proudly sponsored by:
-                    br
-                    img(src="/images/blackrock.png", alt="BlackRock Logo", width="250")
+                .content-left
+                    img(src='/images/napier.jpg', alt='Edinburgh Napier University', height='75', style='margin-top:25px')
+
                 .contact
                     h3 Find us:
                     br
-                    a(href="#", target="_blank", rel="external")
-                        i.fab.fa-slack.fa-3x &nbsp;
-                    a(href="#", target="_blank", rel="external")
+                    a(href='https://discord.gg/hnh3fFq', target='_blank', rel='external')
+                        i.fab.fa-discord.fa-3x &nbsp;
+                    a(href='https://www.facebook.com/enucs', target='_blank', rel='external')
                         i.fab.fa-facebook-square.fa-3x &nbsp;
-                    a(href="#", target="_blank", rel="external")
+                    a(href='https://twitter.com/enucs', target='_blank', rel='external')
                         i.fab.fa-twitter-square.fa-3x
 
         block scripts

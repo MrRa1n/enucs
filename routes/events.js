@@ -12,20 +12,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
-let Event = require('../models/event');
-
 router.get('/', (req, res) => {
-    Event.find({}, (err, events) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('events', {
-                title: 'Events',
-                events: events
-            });
-        }
+    res.render('events', {
+        title: 'Events',
+        events: null
     });
-    
 });
 
 router.get('/add', (req, res) => {
@@ -55,23 +46,11 @@ router.post('/add', upload.single('image'), (req, res, next) => {
         console.log(errors);
         return;
     }
+});
 
-    let event = new Event();
-    event.title = req.body.title;
-    event.location = req.body.location;
-    event.date = new Date(req.body.date);
-    event.start = req.body.start;
-    event.end = req.body.end;
-    event.description = req.body.description;
-    event.image = req.file.filename;
-
-    event.save((err) => {
-        if (err) {
-            console.log(err);
-            return;
-        } else {
-            res.redirect('/');
-        }
+router.get('/:id', (req, res) => {
+    res.render('event_page', {
+        event: null
     });
 });
 

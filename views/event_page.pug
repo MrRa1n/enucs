@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1= event.title
+    h2= event.location
+    h2= event.date
+    h2 #{event.start} - #{event.end}
+    p= event.description
+    img(src='#{event.image}', alt='Event image')

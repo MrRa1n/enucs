@@ -1,18 +1,17 @@
 extends layout
 
 block content
-    
     .body-text
         h1= title
         br
         form(method='POST', action='/users/login')
             .form-group
-                label Username:
+                label(for='email') Email:
                 br
-                input.form-control(name='username', type='text')
+                input.form-control(id='email', name='email', type='text')
             .form-group
-                label Password:
+                label(for='password') Password:
                 br
-                input.form-control(name='password', type='password')
+                input.form-control(id='password', name='password', type='password')
             br
-            input.btn.btn-default(type="submit", value="Login")
+            input.btn.btn-default(type='submit', value='Login')
