@@ -283,7 +283,7 @@ footer .footer-info {
   box-sizing: border-box;
   display: flex;
 }
-footer .footer-info .sponsor {
+footer .footer-info .content-left {
   width: 50%;
   text-align: left;
 }
@@ -343,18 +343,18 @@ footer .footer-info .contact a {
 }
 
 /* Mobile Styles */
-@media only screen and (max-width: 400px) {
-  body {
-    background-color: #F09A9D;
-    /* Red */
-  }
-}
 /* Tablet Styles */
-@media only screen and (min-width: 401px) and (max-width: 1000px) {
+@media only screen and (min-width: 201px) and (max-width: 1000px) {
   .container {
     max-width: 80% !important;
     margin: 0 auto;
     min-height: calc(100vh - 300px);
+  }
+  .container .main-card-content {
+    max-width: 90% !important;
+  }
+  .container .main-card-content h1 {
+    font-size: 70%;
   }
 
   .footer-info {
@@ -363,6 +363,9 @@ footer .footer-info .contact a {
 
   .nav-toggle {
     display: inline-block !important;
+  }
+  .nav-toggle:hover {
+    cursor: pointer !important;
   }
 
   input#menu {
