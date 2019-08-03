@@ -1,3 +1,5 @@
+# Ignore uploaded files
+public/images/events
 
 # Created by https://www.gitignore.io/api/node,code,macos
 # Edit at https://www.gitignore.io/?templates=node,code,macos
@@ -124,8 +126,5 @@ typings/
 .dynamodb/
 
 # End of https://www.gitignore.io/api/node,code,macos
-
-package-lock.json
-
 config/
 db/
