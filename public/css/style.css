@@ -301,48 +301,6 @@ footer .footer-info .contact a {
   margin: 0 auto;
 }
 
-.dropbtn {
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  color: #484848;
-  text-decoration: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: -56px;
-  background-color: #fff;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: 5px;
-}
-
-.dropdown-content a {
-  padding: 12px 16px;
-  display: block;
-  line-height: normal;
-  font-weight: 600;
-  text-decoration: none;
-  color: #484848;
-}
-
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Mobile Styles */
 /* Tablet Styles */
 @media only screen and (min-width: 201px) and (max-width: 1000px) {
   .container {

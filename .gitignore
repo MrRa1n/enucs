@@ -1,3 +1,7 @@
+.scannerwork/
+style.css.map
+style.scss
+
 # Ignore uploaded files
 public/images/events
 
@@ -128,3 +132,4 @@ typings/
 # End of https://www.gitignore.io/api/node,code,macos
 config/
 db/
+
