@@ -48,6 +48,7 @@ body {
 }
 .navbar .navbar-links .navbar-btn {
   background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+  background: -webkit-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   margin-left: 10px;
   border-radius: 5px;
   height: 40px;
@@ -159,6 +160,7 @@ main .upcoming-event-title {
   color: #FFF !important;
   min-width: 100px;
   background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+  background: -webkit-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
 }
 .btn-default:hover {
   background: #27a09e;
@@ -301,12 +303,38 @@ footer .footer-info .contact a {
   margin: 0 auto;
 }
 
+@media only screen and (min-width: 201px) and (max-width: 600px) {
+  .container .main-card-content h1 {
+    font-size: 28px !important;
+  }
+
+  footer .footer-info {
+    display: inline;
+  }
+  footer .footer-info .content-left {
+    width: 80% !important;
+    text-align: center;
+    margin: 0 auto;
+  }
+  footer .footer-info .contact {
+    width: 80% !important;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
+}
 /* Tablet Styles */
-@media only screen and (min-width: 201px) and (max-width: 1000px) {
+@media only screen and (max-width: 1000px) {
   .container {
     max-width: 80% !important;
     margin: 0 auto;
     min-height: calc(100vh - 300px);
+  }
+  .container .body-text .committee {
+    display: inline;
+  }
+  .container .body-text .committee .committee-card {
+    width: 100%;
   }
   .container .main-card-content {
     max-width: 90% !important;
@@ -340,8 +368,10 @@ footer .footer-info .contact a {
     top: 70px;
     max-height: 0;
     overflow: hidden;
+    box-shadow: 0px 5px 5px 0px rgba(185, 185, 185, 0.5);
   }
   .navbar-links a {
+    display: block;
     font-weight: 600;
     text-decoration: none;
     color: #484848;
@@ -360,7 +390,7 @@ footer .footer-info .contact a {
     background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
     margin-left: 0px !important;
     border-radius: 0px !important;
-    height: 60px;
+    height: 60px !important;
   }
 
   input:checked ~ .navbar-links {
