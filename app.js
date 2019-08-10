@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const db = require('./config/databaseSetup');
 const logger = require('morgan');
+const twitter = require('./scripts/twitter');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(expressValidator());
 /** Index page */
 // TODO: Add query to fetch most recent upcoming events
 app.get('/', (req, res) => {
+    twitter.getTweets();
     res.render('index', {
         events: null
     });
