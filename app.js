@@ -5,6 +5,8 @@ const expressValidator = require('express-validator');
 const db = require('./config/databaseSetup');
 const logger = require('morgan');
 const twitter = require('./scripts/twitter');
+const token = require('./config/bearerToken');
+const axios = require('axios');
 
 const app = express();
 
@@ -32,10 +34,33 @@ app.use(expressValidator());
 /** Index page */
 // TODO: Add query to fetch most recent upcoming events
 app.get('/', (req, res) => {
-    twitter.getTweets();
-    res.render('index', {
-        events: null
-    });
+    let tweets = [];
+    const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
+    const bearerToken = 'bearer ' + token.bearerToken();
+    const instance = axios({url: url, headers: { 'Authorization': bearerToken }});
+    instance
+        .then((res) => {
+            res.data.forEach(tweet => {
+                tweet.text = tweet.text.replace(/\n/g,'');
+                let retrievedTweet = { 
+                    body: tweet.text, 
+                    created_at: new Date(tweet.created_at).toLocaleString('en-GB', { 
+                        day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'}), 
+                    handle: tweet.user.screen_name 
+                }
+                tweets.push(retrievedTweet);
+            });
+        })
+        .then(() => {
+            console.log(tweets);
+            res.render('index', {
+                events: null,
+                tweets: tweets
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 
 /** About Us */

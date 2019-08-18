@@ -95,6 +95,19 @@ main .social-feed-title {
   margin-top: 50px;
   margin-bottom: 30px;
 }
+main .twitter-card {
+  width: calc(33% - 10px);
+  min-height: 150px;
+  background-color: white;
+  color: black;
+  box-sizing: border-box;
+  padding: 15px 25px;
+  border-radius: 5px;
+  border-left: 5px solid #1da1f2;
+  box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+}
 main .upcoming-event-title {
   margin-top: 50px;
   margin-bottom: 30px;
