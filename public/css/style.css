@@ -79,9 +79,9 @@ main .main-card {
   background: url("../images/home-banner.jpg");
   border-radius: 15px;
   display: flex;
-  -webkit-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
-  -moz-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
-  box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
 }
 main .main-card .main-card-content {
   color: #FFF;
@@ -94,6 +94,28 @@ main .main-card .main-card-content h1 {
 main .social-feed-title {
   margin-top: 50px;
   margin-bottom: 30px;
+}
+main .twitter-card {
+  width: calc(33% - 10px);
+  min-height: 150px;
+  background-color: white;
+  color: black;
+  box-sizing: border-box;
+  padding: 15px 25px;
+  border-radius: 5px;
+  border-left: 5px solid #1da1f2;
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+}
+main .twitter-card .tweet-link {
+  color: #1da1f2;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 1em;
+  display: block;
 }
 main .upcoming-event-title {
   margin-top: 50px;
@@ -224,9 +246,9 @@ label {
   border-radius: 15px;
   display: flex;
   margin-bottom: 50px;
-  -webkit-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
-  -moz-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
-  box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
 }
 .heading-card .heading-card-content {
   color: #FFF;
@@ -296,6 +318,15 @@ footer .footer-info .contact {
 footer .footer-info .contact a {
   text-decoration: none;
   color: inherit;
+}
+footer .footer-info .contact .fab.fa-discord.fa-3x:hover {
+  color: #7289da;
+}
+footer .footer-info .contact .fab.fa-facebook-square.fa-3x:hover {
+  color: #3b5998;
+}
+footer .footer-info .contact .fab.fa-twitter-square.fa-3x:hover {
+  color: #1da1f2;
 }
 
 .join-action-btn {

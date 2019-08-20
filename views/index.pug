@@ -7,8 +7,16 @@ block content
             br
             a.btn(href='/events') Find out more
     
-    h2.social-feed-title Twitter
-    p Tweets from ENUCS Twitter feed will appear here
+    h2.social-feed-title Latest Tweets
+    div(style='display: flex;justify-content:space-between;')
+        if tweets
+            each t, i in tweets
+                .twitter-card
+                    span#handle(style='font-size: 16px;text-transform: uppercase;color: #555;')= t.handle
+                    i(class='fab fa-twitter' style='float:right;color:#1da1f2;')
+                    p.tweetBody(style='padding: 10px 0;')= t.body
+                    p(style='color:#777;text-transform:uppercase;')= t.created_at
+
     h2.upcoming-event-title Upcoming events
     .event-container
         if !events
