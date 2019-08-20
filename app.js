@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const db = require('./config/databaseSetup');
 const logger = require('morgan');
-const twitter = require('./scripts/twitter');
 const token = require('./config/bearerToken');
 const axios = require('axios');
 
@@ -41,7 +40,6 @@ app.get('/', (req, res) => {
     instance
         .then((res) => {
             res.data.forEach(tweet => {
-                tweet.text = tweet.text.replace(/\n/g,'');
                 let retrievedTweet = { 
                     body: tweet.text, 
                     created_at: new Date(tweet.created_at).toLocaleString('en-GB', { 
