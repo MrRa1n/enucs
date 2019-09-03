@@ -3,6 +3,11 @@ const router = express.Router();
 const users = require('../scripts/users');
 
 router.get('/register', (req, res) => {
+    res.status(403);
+    res.send('Forbidden!');
+
+    return; //Don't execute after here for now
+
     res.render('register', {
         title: 'Register'
     });
@@ -10,6 +15,11 @@ router.get('/register', (req, res) => {
 
 // Register Process
 router.post('/register', (req, res) => {
+    res.status(403);
+    res.send('Forbidden!');
+
+    return; //Don't execute after here for now
+
     // TODO: Validate user input
     const name = req.body.name;
     const email = req.body.email;
@@ -36,6 +46,11 @@ router.post('/register', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
+    res.status(403);
+    res.send('Forbidden!');
+
+    return; //Don't execute after here for now
+
     res.render('login', {
         title: 'Log in'
     });
@@ -43,6 +58,11 @@ router.get('/login', (req, res) => {
 
 // Login process
 router.post('/login', (req, res, next) => {
+    res.status(403);
+    res.send('Forbidden!');
+
+    return; //Don't execute after here for now
+
     const email = req.body.email;
     const password = req.body.password;
 

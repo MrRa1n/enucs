@@ -20,12 +20,21 @@ router.get('/', (req, res) => {
 });
 
 router.get('/add', (req, res) => {
+    res.status(403);
+    res.send('Forbidden!');
+
+    return; //Don't execute after here for now
+
     res.render('add_event', {
         title: 'Add an event'
     });
 });
 
 router.post('/add', upload.single('image'), (req, res, next) => {
+    res.status(403);
+    res.send('Forbidden!');
+
+    return; //Don't execute after here for now
 
     if (req.file) {
         console.log(req.file.filename);
