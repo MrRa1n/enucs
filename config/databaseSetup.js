@@ -9,4 +9,16 @@ exports.init = () => {
     });
 }
 
+exports.getEvents = (callback, config) => {
+    //Allow this function to work with and without this parameter
+    if(config) {
+        return undefined;
+
+    } else {
+        db.all('SELECT title, date, start, end, location FROM Events', (err, rows) => {
+            callback(err, rows);
+        });
+    }
+}
+
 module.exports = exports;
