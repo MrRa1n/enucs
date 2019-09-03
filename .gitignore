@@ -1,6 +1,7 @@
 .scannerwork/
 style.css.map
 style.scss
+db/
 
 # Ignore uploaded files
 public/images/events
@@ -130,6 +131,3 @@ typings/
 .dynamodb/
 
 # End of https://www.gitignore.io/api/node,code,macos
-config/
-db/
-
