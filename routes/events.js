@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer  = require('multer');
+const db = require('../config/databaseSetup');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -13,19 +14,30 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 router.get('/', (req, res) => {
-    res.render('events', {
-        title: 'Events',
-        events: null
-    });
+    db.getEvents((err, rows) => {
+        res.render('events', {
+            title: 'Events',
+            events: err ? null : rows
+        });
+    })
 });
 
 router.get('/add', (req, res) => {
+    res.status(403);
+    res.send('Forbidden!');
+
+    return; //Don't execute after here for now
+
     res.render('add_event', {
         title: 'Add an event'
     });
 });
 
 router.post('/add', upload.single('image'), (req, res, next) => {
+    res.status(403);
+    res.send('Forbidden!');
+
+    return; //Don't execute after here for now
 
     if (req.file) {
         console.log(req.file.filename);
