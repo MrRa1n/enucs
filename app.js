@@ -50,11 +50,12 @@ app.get('/', (req, res) => {
             });
         })
         .then(() => {
-            console.log(tweets);
-            res.render('index', {
-                events: null,
-                tweets: tweets
-            });
+            db.getEvents((err, rows) => {
+                res.render('index', {
+                    events: rows,
+                    tweets: tweets
+                });
+            });    
         })
         .catch((err) => {
             console.log(err);
