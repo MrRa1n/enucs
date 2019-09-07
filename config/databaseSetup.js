@@ -10,13 +10,13 @@ exports.init = () => {
 }
 
 exports.getEvents = (callback) => {
-    db.all('SELECT title, date, start, end, location FROM Events ORDER BY date DESC', (err, rows) => {
+    db.all('SELECT title, date, start, end, location FROM Events ORDER BY date', (err, rows) => {
         callback(err, rows);
     });
 }
 
 exports.getFutureEvents = (limit, callback) => {
-    db.all("SELECT title, date, start, end, location FROM Events WHERE date >= DATE('now') ORDER BY date DESC LIMIT ?", limit, (err, rows) => {
+    db.all("SELECT title, date, start, end, location FROM Events WHERE date >= DATE('now') ORDER BY date LIMIT ?", limit, (err, rows) => {
         callback(err, rows);
     });
 }
