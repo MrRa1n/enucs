@@ -50,9 +50,14 @@ app.get('/', (req, res) => {
             });
         })
         .then(() => {
-            db.getEvents((err, rows) => {
+            db.getFutureEvents(6, (err, rows) => {
+                rows = rows.map((row) => {
+                    row.date = new Date(row.date).toLocaleString('en-GB', {day: '2-digit', month: 'short', year: 'numeric'});
+                    return row;
+                });
+
                 res.render('index', {
-                    events: rows,
+                    events: err ? null : rows,
                     tweets: tweets
                 });
             });    

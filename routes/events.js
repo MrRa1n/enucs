@@ -15,6 +15,11 @@ const upload = multer({storage: storage});
 
 router.get('/', (req, res) => {
     db.getEvents((err, rows) => {
+        rows = rows.map((row) => {
+            row.date = new Date(row.date).toLocaleString('en-GB', {day: '2-digit', month: 'short', year: 'numeric'});
+            return row;
+        });
+
         res.render('events', {
             title: 'Events',
             events: err ? null : rows
