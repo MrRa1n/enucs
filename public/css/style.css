@@ -350,8 +350,14 @@ footer .footer-info .contact .fab.fa-twitter-square.fa-3x:hover {
   margin: 0 auto;
 }
 
-@media only screen and (min-width: 201px) and (max-width: 500px) {
-  .container .main-card-content h1 {
+@media only screen and (min-width: 201px) and (max-width: 600px) {
+  .container .main-card {
+    height: 350px !important;
+  }
+  .container .main-card .main-card-content {
+    width: 100% !important;
+  }
+  .container .main-card .main-card-content h1 {
     font-size: 28px !important;
   }
 

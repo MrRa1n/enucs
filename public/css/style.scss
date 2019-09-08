@@ -364,13 +364,18 @@ footer {
     margin: 0 auto;
 }
 
-@media only screen and (min-width: 201px) and (max-width: 500px) {
+@media only screen and (min-width: 201px) and (max-width: 600px) {
     .container {
-        .main-card-content {
-            h1 {
-                font-size: 28px !important;
+        .main-card {
+            height: 350px!important;
+            .main-card-content {
+                width: 100%!important;
+                h1 {
+                    font-size: 28px !important;
+                }
             }
         }
+
     }
 
     footer {
