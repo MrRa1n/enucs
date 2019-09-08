@@ -359,7 +359,7 @@ footer {
     margin: 0 auto;
 }
 
-@media only screen and (min-width: 201px) and (max-width: 600px) {
+@media only screen and (min-width: 201px) and (max-width: 500px) {
     .container {
         .main-card-content {
             h1 {
@@ -375,6 +375,10 @@ footer {
                 width: 80% !important;
                 text-align: center;
                 margin: 0 auto;
+            }
+            .contact {
+                text-align: center!important;
+                margin-bottom: 50px!important;
             }
         }
     }
@@ -405,10 +409,6 @@ footer {
     }
     .footer-info {
         width: 80%!important;
-        .contact {
-            text-align: center!important;
-            margin-bottom: 50px!important;
-        }
     }
     .nav-toggle {
         display: inline-block!important;
