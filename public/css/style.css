@@ -164,6 +164,12 @@ main .upcoming-event-title {
   padding: 10px 20px 20px 20px;
   box-sizing: border-box;
 }
+.event-container .event-card .event-card-info img {
+  float: right;
+  width: 60px;
+  margin-top: 10px;
+  border-radius: 0;
+}
 .event-container .event-card .event-card-info .event-date {
   color: #727272;
   font-size: 14px;
