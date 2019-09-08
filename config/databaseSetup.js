@@ -5,20 +5,20 @@ const db = new sqlite3.Database('./db/enucs.db');
 exports.init = () => {
     db.serialize(() => {
         db.run('CREATE TABLE IF NOT EXISTS Users (userID INTEGER PRIMARY KEY, name TEXT, email TEXT, password TEXT)');
-        db.run('CREATE TABLE IF NOT EXISTS Events (eventID INTEGER PRIMARY KEY, title TEXT, date TEXT, start TEXT, end TEXT, location TEXT)');
+        db.run('CREATE TABLE IF NOT EXISTS Events (eventID INTEGER PRIMARY KEY, title TEXT, date DATE, start TEXT, end TEXT, location TEXT)');
     });
 }
 
-exports.getEvents = (callback, config) => {
-    //Allow this function to work with and without this parameter
-    if(config) {
-        return undefined;
+exports.getEvents = (callback) => {
+    db.all('SELECT title, date, start, end, location FROM Events ORDER BY date', (err, rows) => {
+        callback(err, rows);
+    });
+}
 
-    } else {
-        db.all('SELECT title, date, start, end, location FROM Events', (err, rows) => {
-            callback(err, rows);
-        });
-    }
+exports.getFutureEvents = (limit, callback) => {
+    db.all("SELECT title, date, start, end, location FROM Events WHERE date >= DATE('now') ORDER BY date LIMIT ?", limit, (err, rows) => {
+        callback(err, rows);
+    });
 }
 
 module.exports = exports;

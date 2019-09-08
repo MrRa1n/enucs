@@ -22,14 +22,13 @@ block content
         if !events
             p Check back soon for more upcoming events
         else
-            each event, i in events
-                if i < 3
-                    .event-card
-                        a(href='#')
-                            img(src='/images/file.png', alt= event.title + ' image')
-                            .event-card-info
-                                h2= event.title
-                                p.event-date= event.date
-                                p.event-time #{event.start} - #{event.end}
-                                p.event-location= event.location
+            each event in events
+                .event-card
+                    a(href='#')
+                        img(src='/images/file.png', alt= event.title + ' image')
+                        .event-card-info
+                            h2= event.title
+                            p.event-date= event.date
+                            p.event-time #{event.start} - #{event.end}
+                            p.event-location= event.location
             
