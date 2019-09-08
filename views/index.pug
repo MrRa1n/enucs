@@ -8,7 +8,7 @@ block content
             a.btn(href='/events') Find out more
     
     h2.social-feed-title Latest Tweets
-    div(style='display: flex;justify-content:space-between;')
+    .twitter-card-container
         if tweets
             each t, i in tweets
                 .twitter-card
@@ -26,7 +26,6 @@ block content
                 if i < 3
                     .event-card
                         a(href='#')
-                            img(src='/images/file.png', alt= event.title + ' image')
                             .event-card-info
                                 h2= event.title
                                 p.event-date= event.date

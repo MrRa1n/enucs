@@ -14,8 +14,6 @@ block content
             each event, i in events
                 .event-card
                     a(href='#')
-                        //-TODO: Add proper image support
-                        img(src='/images/file.png', alt=event.title + ' image')
                         .event-card-info
                             h2= event.title
                             p.event-date= event.date

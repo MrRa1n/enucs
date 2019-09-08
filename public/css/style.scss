@@ -45,6 +45,7 @@ body {
         }
         .navbar-btn {
             background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+            background: -webkit-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
             margin-left: 10px;
             border-radius: 5px;
             height: 40px;
@@ -71,7 +72,7 @@ main {
     margin-top: 30px;
     .main-card {
         width: 100%;
-        height: 350px;
+        height: 300px;
         padding: 50px;
         box-sizing: border-box;
         background: url('../images/home-banner.jpg');
@@ -98,20 +99,52 @@ main {
         margin-top: 50px;
         margin-bottom: 30px;
     }
+
+    .twitter-card-container {
+        display: flex;
+        justify-content:space-between;
+    }
+    
+    .twitter-card {
+        width: calc(33% - 10px);
+        min-height: 150px;
+        background-color: white;
+        color: black;
+        box-sizing: border-box;
+        padding: 15px 25px;
+        border-radius: 5px;
+        border-left: 5px solid #1da1f2;
+        -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+        -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+        box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+        height: -moz-fit-content;
+        height: -webkit-fit-content;
+    }
+    .twitter-card .tweet-link {
+        color: #1da1f2;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 1em;
+        display: block;
+    }
+    .upcoming-event-title {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
 }
 .event-container {
     display: flex;
     flex-wrap: wrap;
 
     .event-card {
-        width: 32%;
-        min-height: 300px;
+        width: calc(32% - 5px);
+        border-left: 5px solid #c62828;
         margin-right: 20px;
-        border-radius: 15px;
+        border-radius: 5px;
         margin-bottom: 25px;
-        -webkit-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
-        -moz-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
-        box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
+        -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+        -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+        box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
 
         &:nth-child(3n) {
             margin-right: 0;
@@ -163,6 +196,8 @@ main {
     color: #FFF!important;
     min-width: 100px;
     background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+    background: -webkit-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+
     &:hover {
         background: #27a09e;
     }
@@ -173,7 +208,7 @@ main {
     width: 100%;
 }
 .event-time {
-    width: 47.5%!important;
+    width: 60%!important;
 }
 .start {
     margin-right: 5%;
@@ -287,11 +322,33 @@ footer {
         }
 
         .contact {
+            $color_1: #7289da;
+            $color_2: #3b5998;
+            $color_3: #1da1f2;
             width: 50%;
             text-align: right;
+            margin: 0 auto;
+            margin-bottom: 25px;
+        
             a {
                 text-decoration: none;
                 color: inherit;
+            }
+            
+            .fab.fa-discord.fa-3x {
+                &:hover {
+                    color: $color_1;
+                }
+            }
+            .fab.fa-facebook-square.fa-3x {
+                &:hover {
+                    color: $color_2;
+                }
+            }
+            .fab.fa-twitter-square.fa-3x {
+                &:hover {
+                    color: $color_3;
+                }
             }
         }
     }
@@ -301,6 +358,28 @@ footer {
     width: 100px;
     margin: 0 auto;
 }
+
+@media only screen and (min-width: 201px) and (max-width: 600px) {
+    .container {
+        .main-card-content {
+            h1 {
+                font-size: 28px !important;
+            }
+        }
+    }
+
+    footer {
+        .footer-info {
+            display: inline;
+            .content-left {
+                width: 80% !important;
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+  
   
 /* Tablet Styles */
 @media only screen and (min-width: 201px) and (max-width: 1000px) {
@@ -315,9 +394,21 @@ footer {
                 font-size: 70%;
             }
         }
+        .body-text {
+            .committee {
+                display: inline!important;
+                .committee-card {
+                    width: 100%!important;
+                }
+            }
+        }
     }
     .footer-info {
         width: 80%!important;
+        .contact {
+            text-align: center!important;
+            margin-bottom: 50px!important;
+        }
     }
     .nav-toggle {
         display: inline-block!important;
@@ -356,6 +447,7 @@ footer {
         }
         .navbar-btn {
             background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
+            background: -webkit-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
             margin-left: 0px!important;
             border-radius: 0px!important;
             height: 60px;
@@ -363,6 +455,21 @@ footer {
     }
     input:checked ~ .navbar-links {
         max-height: 100%;
+    }
+    .twitter-card-container {
+        display: inline!important;
+        .twitter-card {
+            width: 100%;
+            margin-bottom: 1em;
+        }
+    }
+
+    .event-container {
+        display: inline!important;
+
+        .event-card {
+            width: 100%;
+        }
     }
 }
 
