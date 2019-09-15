@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,600");
+/* ENUCS red */
+/* Colour for body text */
+/* About page banner gradient */
+/* Event page banner gradient */
+/* Join page banner gradient */
+/* Button gradient */
+/* Card shadow */
+/* Footer social media icon colors */
 * {
   margin: 0;
   padding: 0;
@@ -47,6 +55,7 @@ body {
   box-sizing: border-box;
 }
 .navbar .navbar-links .navbar-btn {
+  background: linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   background: -webkit-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   margin-left: 10px;
@@ -76,14 +85,15 @@ main .main-card {
   height: 300px;
   padding: 50px;
   box-sizing: border-box;
+  background: linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   background: -webkit-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
-  -webkit-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
-  -moz-box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
-  box-shadow: 0px 0px 17px 1px rgba(194, 194, 194, 0.75);
+  box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
 }
 main .main-card .main-card-content {
   color: #FFF;
@@ -114,9 +124,9 @@ main .twitter-card {
   padding: 15px 25px;
   border-radius: 5px;
   border-left: 5px solid #1da1f2;
-  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
-  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
   box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
   height: -moz-fit-content;
   height: -webkit-fit-content;
 }
@@ -142,17 +152,20 @@ main .upcoming-event-title {
   margin-right: 20px;
   border-radius: 5px;
   margin-bottom: 25px;
-  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
-  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
   box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
 }
 .event-container .event-card:nth-child(3n) {
   margin-right: 0;
 }
 .event-container .event-card:hover {
-  -webkit-transform: scale(1.03) translateZ(0);
   transform: scale(1.03) translateZ(0);
-  transition: 0.35s transform, 0.35s -webkit-transform;
+  -moz-transform: scale(1.03) translateZ(0);
+  -webkit-transform: scale(1.03) translateZ(0);
+  transition: 0.35s transform, 0.35s transform;
+  -moz-transition: 0.35s -moz-transform, 0.35s -moz-transform;
+  -webkit-transition: 0.35s -webkit-transform, 0.35s -webkit-transform;
 }
 .event-container .event-card a {
   text-decoration: none;
@@ -197,6 +210,7 @@ main .upcoming-event-title {
 .btn-default {
   color: #FFF !important;
   min-width: 100px;
+  background: linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   background: -moz-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
   background: -webkit-linear-gradient(45deg, #27a09e 0%, #30ce88 100%);
 }
@@ -235,13 +249,15 @@ label {
 }
 
 .about {
-  background: url("../images/about-banner.jpg");
-  background-position-y: -100px;
+  background: linear-gradient(45deg, #1d6bb4 0%, #00d4ff 100%);
+  background: -moz-linear-gradient(45deg, #1d6bb4 0%, #00d4ff 100%);
+  background: -webkit-linear-gradient(45deg, #1d6bb4 0%, #00d4ff 100%);
 }
 
 .events {
-  background: url("../images/event-banner.jpg");
-  background-position-y: -30px;
+  background: linear-gradient(45deg, #a214a0 0%, #40f 100%);
+  background: -moz-linear-gradient(45deg, #a214a0 0%, #40f 100%);
+  background: -webkit-linear-gradient(45deg, #a214a0 0%, #40f 100%);
 }
 
 .sponsors {
@@ -250,8 +266,9 @@ label {
 }
 
 .join {
-  background: url("../images/join-banner.jpg");
-  background-position-y: -75px;
+  background: linear-gradient(45deg, #d78b3c 0%, #c340f4 100%);
+  background: -moz-linear-gradient(45deg, #d78b3c 0%, #c340f4 100%);
+  background: -webkit-linear-gradient(45deg, #d78b3c 0%, #c340f4 100%);
 }
 
 .heading-card {
@@ -262,9 +279,9 @@ label {
   border-radius: 15px;
   display: flex;
   margin-bottom: 50px;
-  -webkit-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
-  -moz-box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
-  box-shadow: 0px 0px 10px 1px rgba(185, 185, 185, 0.75);
+  box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
 }
 .heading-card .heading-card-content {
   color: #FFF;
