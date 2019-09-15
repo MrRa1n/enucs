@@ -76,7 +76,9 @@ body {
             margin-top:15px;
             line-height: 40px;
             padding: 0;
-            box-shadow: 0px 0px 5px 1px rgba(185, 185, 185, 0.75);
+            box-shadow: $card_shadow;
+            -moz-box-shadow: $card_shadow;
+            -webkit-box-shadow: $card_shadow;
             a {
                 padding: 10px 20px;
                 color: #FFF;
@@ -211,7 +213,9 @@ main {
     display: inline-block;
     text-align: center;
     border: none;
-    box-shadow: 0px 0px 5px 1px rgba(185, 185, 185, 0.75);
+    box-shadow: $card_shadow;
+    -moz-box-shadow: $card_shadow;
+    -webkit-box-shadow: $card_shadow;
     &:hover {
         cursor: pointer;
     }
