@@ -35,6 +35,7 @@ app.use(expressValidator());
 app.get('/', (req, res) => {
     let tweets = [];
     const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=enucs&exclude_replies=true&include_rts=false&count=5';
+    const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
     const bearerToken = 'bearer ' + token.bearerToken();
     const instance = axios({url: url, headers: { 'Authorization': bearerToken }});
     instance
