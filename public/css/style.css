@@ -25,12 +25,6 @@ body {
   border-bottom: 1px solid #E4E4E4;
   line-height: 70px;
 }
-.navbar .nav-toggle {
-  float: right;
-  line-height: 70px;
-  font-size: 1.5em;
-  display: none;
-}
 .navbar .navbar-logo {
   font-size: 22px;
 }
@@ -76,7 +70,6 @@ body {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  min-height: calc(100vh - 300px);
 }
 
 main {
@@ -105,12 +98,8 @@ main .main-card .main-card-content {
 main .main-card .main-card-content h1 {
   font-size: 38px;
 }
-main .social-feed-title {
-  margin-top: 50px;
-  margin-bottom: 30px;
-}
 main .upcoming-event-title {
-  margin-top: 50px;
+  margin-top: 100px;
   margin-bottom: 30px;
 }
 main .twitter-card-container {
@@ -344,7 +333,7 @@ footer .footer-info {
   box-sizing: border-box;
   display: flex;
 }
-footer .footer-info .content-left {
+footer .footer-info .sponsor {
   width: 50%;
   text-align: left;
 }
@@ -361,6 +350,7 @@ footer .footer-info .contact a {
 footer .footer-info .contact .fab.fa-discord.fa-3x:hover {
   color: #7289da;
 }
+
 footer .footer-info .contact .fab.fa-facebook-square.fa-3x:hover {
   color: #3b5998;
 }
