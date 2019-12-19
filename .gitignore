@@ -2,9 +2,7 @@
 style.css.map
 style.scss
 db/
-
-# Ignore uploaded files
-public/images/events
+config/bearerToken.js
 
 # Created by https://www.gitignore.io/api/node,code,macos
 # Edit at https://www.gitignore.io/?templates=node,code,macos
