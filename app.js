@@ -6,8 +6,18 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const db = require('./config/databaseSetup');
 const logger = require('morgan');
+const token = require('./config/bearerToken');
+const axios = require('axios');
+const log4js = require('log4js');
 
 const app = express();
+
+log4js.configure({
+    appenders: { errors: { type: 'file', filename: 'errors.log' } },
+    categories: { default: { appenders: ['errors'], level: 'error' } }
+});
+
+const LOGGER = log4js.getLogger('errors');
 
 db.init();
 
@@ -33,9 +43,39 @@ app.use(expressValidator());
 /** Index page */
 // TODO: Add query to fetch most recent upcoming events
 app.get('/', (req, res) => {
-    res.render('index', {
-        events: null
-    });
+    LOGGER.info('/');
+    let tweets = [];
+    const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
+    const bearerToken = 'bearer ' + token.bearerToken();
+    const instance = axios({url: url, headers: { 'Authorization': bearerToken }});
+    instance
+        .then((res) => {
+            res.data.forEach(tweet => {
+                let retrievedTweet = { 
+                    body: tweet.text, 
+                    created_at: new Date(tweet.created_at).toLocaleString('en-GB', { 
+                        day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'}), 
+                    handle: tweet.user.screen_name 
+                }
+                tweets.push(retrievedTweet);
+            });
+        })
+        .then(() => {
+            db.getFutureEvents(6, (err, rows) => {
+                rows = rows.map((row) => {
+                    row.date = new Date(row.date).toLocaleString('en-GB', {day: '2-digit', month: 'short', year: 'numeric'});
+                    return row;
+                });
+
+                res.render('index', {
+                    events: err ? null : rows,
+                    tweets: tweets
+                });
+            });    
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 });
 
 /** About Us */
@@ -62,6 +102,7 @@ app.use('/join', join);
 const users = require('./routes/users');
 app.use('/users', users);
 
-app.listen(1337, () => {
-    console.log('Listening on port 1337...');
+
+app.listen(3000, () => {
+    console.log('Listening on port 3000...');
 });

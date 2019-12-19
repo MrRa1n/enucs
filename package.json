@@ -18,16 +18,14 @@
   },
   "homepage": "https://github.com/MrRa1n/enucs#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-fileupload": "^1.1.1-alpha.2",
     "express-validator": "^5.3.1",
-    "mongodb": "^3.1.13",
-    "mongoose": "^5.4.11",
+    "log4js": "^5.1.0",
     "multer": "^1.4.1",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
     "pug": "^2.0.3",
     "sqlite3": "^4.0.9"
   },
