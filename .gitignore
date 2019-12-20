@@ -1,7 +1,6 @@
 .scannerwork/
 style.css.map
 style.scss
-db/
 config/bearerToken.js
 config/database.json
 
