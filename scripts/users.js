@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/enucs.db');
+//const sqlite3 = require('sqlite3').verbose();
+//const db = new sqlite3.Database('./db/enucs.db');
 
 /** Logic for handling user registration */
 exports.register = (name, email, password) => {
