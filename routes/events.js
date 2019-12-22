@@ -10,7 +10,21 @@ router.get('/', (req, res) => {
     db.getEvents((err, rows) => {
         rows = rows.map((row) => {
             if(row.start_time.toDateString() != row.end_time.toDateString()) {
-                row.date = ''
+                row.start_time = row.start_time.toLocaleString('en-GB', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                row.end_time = row.end_time.toLocaleString('en-GB', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
 
             } else {
                 row.date = row.start_time.toLocaleString('en-GB', {

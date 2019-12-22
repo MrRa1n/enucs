@@ -17,7 +17,8 @@ block content
                         .event-card-info
                             img(src="/images/logo.png" alt="ENUCS Logo")
                             h2= event.title
-                            p.event-date= event.date
+                            if event.date
+                                .event-date= event.date
                             p.event-time #{event.start_time} - #{event.end_time}
                             p.event-location= event.location_name
             
