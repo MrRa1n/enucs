@@ -1,6 +1,8 @@
 import fs from 'fs';
 import { Client, ClientConfig } from 'pg';
 
+import { Event } from './event';
+
 export class Database {
     private client: Client;
 
@@ -9,15 +11,17 @@ export class Database {
         this.client.connect();
     }
 
-    public getEvents(callback: Function): void {
-        this.client.query('SELECT title, start_time, end_time, name AS location_name FROM events JOIN locations ON location_id = locations.id ORDER BY start_time', (err: Error, res: any) => {
-            callback(err, res.rows);
-        });
+    public async getEvents(): Promise<Event[]> {
+        return this.client
+            .query('SELECT title, start_time, end_time, name AS location_name FROM events JOIN locations ON location_id = locations.id ORDER BY start_time')
+            .then(res => Event.fromArray(res.rows))
+            .catch(e => e);
     }
 
-    public getFutureEvents(limit: number, callback: Function): void {
-        this.client.query("SELECT title, start_time, end_time, name AS location_name FROM events JOIN locations ON location_id = locations.id WHERE end_time >= DATE('now') ORDER BY start_time LIMIT $1::integer", [limit], (err: Error, res: any) => {
-            callback(err, res.rows);
-        });
+    public async getFutureEvents(limit: number): Promise<Event[]> {
+        return this.client
+            .query("SELECT title, start_time, end_time, name AS location_name FROM events JOIN locations ON location_id = locations.id WHERE end_time >= DATE('now') ORDER BY start_time LIMIT $1::integer", [limit])
+            .then(res => Event.fromArray(res.rows))
+            .catch(e => e);
     }
 }

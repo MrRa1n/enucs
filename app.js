@@ -67,8 +67,8 @@ app.get('/', (_req, res) => {
             });
         })
         .then(() => {
-            db.getFutureEvents(6, (err, rows) => {
-                rows = rows.map((row) => {
+            db.getFutureEvents(6).then(events => {
+                events.map(row => {
                     if(row.start_time.toDateString() != row.end_time.toDateString()) {
                         row.start_time = row.start_time.toLocaleString('en-GB', {
                             day: '2-digit',
@@ -102,11 +102,13 @@ app.get('/', (_req, res) => {
                             hour: '2-digit',
                             minute: '2-digit'
                         });
-                    }   
+                    }  
+        
                     return row;
                 });
+
                 res.render('index', {
-                    events: err ? null : rows,
+                    events: events,
                     tweets: tweets
                 });
             });
