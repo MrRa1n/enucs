@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer  = require('multer');
-const db = require('../config/databaseSetup');
+const db = require('../../config/databaseSetup');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './public/images/events/')

@@ -8,53 +8,60 @@ const logger = require('morgan');
 const token = require('./config/bearerToken');
 const axios = require('axios');
 const log4js = require('log4js');
-
 const app = express();
 
+/** Configuration for logger. */
 log4js.configure({
-    appenders: { errors: { type: 'file', filename: 'errors.log' } },
-    categories: { default: { appenders: ['errors'], level: 'error' } }
+    appenders: { 
+        errors: { type: 'file', filename: 'enucs.log' },
+        console: { type: 'console' }
+    },
+    categories: { default: { appenders: ['console'], level: 'all' } }
 });
 
-const LOGGER = log4js.getLogger('errors');
+/** The logger. */
+const LOGGER = log4js.getLogger('default');
 
+/** Initialise the database. */
 db.init();
 
-/** Logger for HTTP requests */
+/** Logger for HTTP requests. */
 app.use(logger('dev'));
-
-// Body Parser Middleware
-// Parse application/x-www-form-urlencoded
+/** application/x-www-form-urlencoded. */
 app.use(bodyParser.urlencoded({ extended: false }));
-// Parse application/json
+/** Handles parsing for JSON data. */
 app.use(bodyParser.json());
-
-// Set public folder for static files
+/** Set directory for static files. */
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Setup pug view engine
+/** Set the view template path. */
 app.set('views', path.join(__dirname, 'views'));
+/** Set view engine. */
 app.set('view engine', 'pug');
-
 // Express Validator Middleware
 app.use(expressValidator());
 
 /** Index page */
-// TODO: Add query to fetch most recent upcoming events
-app.get('/', (req, res) => {
-    LOGGER.info('/');
+app.get('/', (_req, res) => {
+    LOGGER.info('Fetching tweets...');
     let tweets = [];
-    const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
+    const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+        +'?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
     const bearerToken = 'bearer ' + token.bearerToken();
-    const instance = axios({url: url, headers: { 'Authorization': bearerToken }});
+    const instance = axios({ url: url, headers: { 'Authorization': bearerToken } });
     instance
         .then((res) => {
             res.data.forEach(tweet => {
-                let retrievedTweet = { 
-                    body: tweet.text, 
-                    created_at: new Date(tweet.created_at).toLocaleString('en-GB', { 
-                        day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'}), 
-                    handle: tweet.user.screen_name 
+                let retrievedTweet = {
+                    body: tweet.text,
+                    created_at: new Date(tweet.created_at)
+                        .toLocaleString('en-GB', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        }),
+                    handle: tweet.user.screen_name
                 }
                 tweets.push(retrievedTweet);
             });
@@ -62,15 +69,19 @@ app.get('/', (req, res) => {
         .then(() => {
             db.getFutureEvents(6, (err, rows) => {
                 rows = rows.map((row) => {
-                    row.date = new Date(row.date).toLocaleString('en-GB', {day: '2-digit', month: 'short', year: 'numeric'});
+                    row.date = new Date(row.date)
+                        .toLocaleString('en-GB', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric' 
+                        });
                     return row;
                 });
-
                 res.render('index', {
                     events: err ? null : rows,
                     tweets: tweets
                 });
-            });    
+            });
         })
         .catch((err) => {
             console.log(err);
@@ -78,29 +89,24 @@ app.get('/', (req, res) => {
 });
 
 /** About Us */
-const about = require('./routes/about');
+const about = require('./routes/about/about');
 app.use('/about', about);
 
 /** Events */
-const events = require('./routes/events');
+const events = require('./routes/events/events');
 app.use('/events', events);
 
 /** Sponsors */
-const partners = require('./routes/partners');
+const partners = require('./routes/partners/partners');
 app.use('/partners', partners);
 
 /** Merchandise */
-const merch = require('./routes/merch');
+const merch = require('./routes/merch/merch');
 app.use('/merch', merch);
 
 /** Join Us */
-const join = require('./routes/join');
+const join = require('./routes/join/join');
 app.use('/join', join);
-
-/** Users */
-const users = require('./routes/users');
-app.use('/users', users);
-
 
 app.listen(3000, () => {
     console.log('Listening on port 3000...');
