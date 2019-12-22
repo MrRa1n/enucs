@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/databaseSetup');
+const db = require('../../config/databaseSetup');
 
 /** 
  * GET mapping for base URL of Events page

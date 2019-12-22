@@ -1,14 +1,8 @@
 extends layout
 
-block content 
-    .main-card
-        .main-card-content 
-            h1 Access our Fresher's
-            h1 Sign Up
-            br
-            a.btn(href='https://www.facebook.com/groups/385303225464020/', target='_blank') Click Here!
-        .main-card-side-image
-            img(src='/images/qr.png')
+block content
+    img.home-banner(src='/images/hacknapier.png')
+    h1.event-date March 7-8, 2020
     
     h2.social-feed-title Latest Tweets
     .twitter-card-container
@@ -22,7 +16,7 @@ block content
 
     h2.upcoming-event-title Upcoming events
     .event-container
-        if !events
+        if !events || events.length === 0
             p Check back soon for more upcoming events
         else
             each event in events
