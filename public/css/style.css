@@ -91,6 +91,7 @@ main .home-banner {
 main .event-date {
   text-align: center;
   text-transform: uppercase;
+  font-size: 40px;
 }
 main .main-card {
   width: 100%;
