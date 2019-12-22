@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-const db = require('./config/databaseSetup');
+const db = require('./database/database');
 const logger = require('morgan');
 const token = require('./config/bearerToken');
 const axios = require('axios');
@@ -22,9 +22,6 @@ log4js.configure({
 
 /** The logger. */
 const LOGGER = log4js.getLogger('default');
-
-/** Initialise the database. */
-db.init();
 
 /** Logger for HTTP requests. */
 app.use(logger('dev'));
@@ -70,12 +67,40 @@ app.get('/', (_req, res) => {
         .then(() => {
             db.getFutureEvents(6, (err, rows) => {
                 rows = rows.map((row) => {
-                    row.date = new Date(row.date)
-                        .toLocaleString('en-GB', {
+                    if(row.start_time.toDateString() != row.end_time.toDateString()) {
+                        row.start_time = row.start_time.toLocaleString('en-GB', {
                             day: '2-digit',
                             month: 'short',
-                            year: 'numeric' 
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
                         });
+        
+                        row.end_time = row.end_time.toLocaleString('en-GB', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+        
+                    } else {
+                        row.date = row.start_time.toLocaleString('en-GB', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric'
+                        });
+        
+                        row.start_time = row.start_time.toLocaleTimeString('en-GB', {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+        
+                        row.end_time = row.end_time.toLocaleTimeString('en-GB', {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    }   
                     return row;
                 });
                 res.render('index', {
