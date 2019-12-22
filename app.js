@@ -4,12 +4,14 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-const db = require('./database/database');
+const database = require('./database/database');
 const logger = require('morgan');
 const token = require('./config/bearerToken');
 const axios = require('axios');
 const log4js = require('log4js');
 const app = express();
+
+const db = new database.Database();
 
 /** Configuration for logger. */
 log4js.configure({
