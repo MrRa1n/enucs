@@ -1,16 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const multer  = require('multer');
 const db = require('../../config/databaseSetup');
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './public/images/events/')
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname)
-    }
-});
-const upload = multer({ storage: storage });
 
 /** 
  * GET mapping for base URL of Events page
@@ -48,7 +38,7 @@ router.get('/add', (req, res) => {
  * POST mapping for adding new event
  * TODO: Implement functionality for adding event
  */
-router.post('/add', upload.single('image'), (req, res, next) => {
+router.post('/add', (req, res, next) => {
     res.status(403);
     res.send('Forbidden!');
     return;
