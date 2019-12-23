@@ -4,8 +4,18 @@
   "description": "Website for ENUCS",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "npm run serve",
+    "build": "npm run build-sass && npm run build-ts",
+    "serve": "node app.js",
+    "watch-node": "nodemon app.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "build-sass": "node-sass public/css/style.scss public/css/style.css",
+    "watch-sass": "node-sass -w public/css/style.scss public/css/style.css",
+    "debug": "npm run build && npm run watch-debug",
+    "serve-debug": "nodemon --inspect app.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-sass\" \"npm run watch-ts\" \"npm run serve-debug\""
   },
   "repository": {
     "type": "git",
@@ -29,7 +39,12 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
+    "@types/node": "^12.12.21",
+    "@types/pg": "^7.11.2",
+    "concurrently": "^5.0.2",
     "morgan": "^1.9.1",
-    "nodemon": "^1.19.4"
+    "node-sass": "^4.13.0",
+    "nodemon": "^1.19.4",
+    "typescript": "^3.7.4"
   }
 }

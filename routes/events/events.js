@@ -1,55 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../database/database');
+const database = require('../../database/database');
+
+const db = new database.Database();
 
 /** 
  * GET mapping for base URL of Events page
  * Fetches list of events from database
  */
 router.get('/', (req, res) => {
-    db.getEvents((err, rows) => {
-        rows = rows.map((row) => {
-            if(row.start_time.toDateString() != row.end_time.toDateString()) {
-                row.start_time = row.start_time.toLocaleString('en-GB', {
-                    day: '2-digit',
-                    month: 'short',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
+    db.getEvents().then(events => {
+        events = events.map(event => event.prettifyDates());
 
-                row.end_time = row.end_time.toLocaleString('en-GB', {
-                    day: '2-digit',
-                    month: 'short',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-
-            } else {
-                row.date = row.start_time.toLocaleString('en-GB', {
-                    day: '2-digit',
-                    month: 'short',
-                    year: 'numeric'
-                });
-
-                row.start_time = row.start_time.toLocaleTimeString('en-GB', {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-
-                row.end_time = row.end_time.toLocaleTimeString('en-GB', {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-            }       
-            return row;
-        });
         res.render('events', {
             title: 'Events',
-            events: err ? null : rows
+            events: events
         });
-    })
+    });
 });
 
 /** 

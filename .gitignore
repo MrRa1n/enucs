@@ -1,8 +1,11 @@
 .scannerwork/
-style.css.map
-style.scss
-config/bearerToken.js
-config/database.json
+config/
+
+*.map
+
+# Ignore compiled files
+*.css
+database/*.js
 
 # Created by https://www.gitignore.io/api/node,code,macos
 # Edit at https://www.gitignore.io/?templates=node,code,macos
