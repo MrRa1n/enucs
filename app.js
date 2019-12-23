@@ -99,7 +99,7 @@ app.use('/merch', merch);
 
 /** Join Us */
 const join = require('./routes/join/join');
-app.use('/join', join);
+app.use('/join', join.router);
 
 app.listen(3000, () => {
     console.log('Listening on port 3000...');
