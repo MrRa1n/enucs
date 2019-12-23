@@ -11,7 +11,7 @@ const axios = require('axios');
 const log4js = require('log4js');
 const app = express();
 
-const db = new database.Database();
+const db = new database.default();
 
 /** Configuration for logger. */
 log4js.configure({
@@ -87,7 +87,7 @@ app.use('/about', about);
 
 /** Events */
 const events = require('./routes/events/events');
-app.use('/events', events);
+app.use('/events', events.router);
 
 /** Sponsors */
 const partners = require('./routes/partners/partners');

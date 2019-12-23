@@ -1,9 +1,9 @@
 import fs from 'fs';
 import { Client, ClientConfig } from 'pg';
 
-import { Event } from './event';
+import Event from './event';
 
-export class Database {
+export default class Database {
     private client: Client;
 
     constructor(config?: ClientConfig) {
