@@ -83,7 +83,7 @@ app.get('/', (_req, res) => {
 
 /** About Us */
 const about = require('./routes/about/about');
-app.use('/about', about);
+app.use('/about', about.router);
 
 /** Events */
 const events = require('./routes/events/events');
