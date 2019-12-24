@@ -95,7 +95,7 @@ app.use('/partners', partners);
 
 /** Merchandise */
 const merch = require('./routes/merch/merch');
-app.use('/merch', merch);
+app.use('/merch', merch.router);
 
 /** Join Us */
 const join = require('./routes/join/join');
