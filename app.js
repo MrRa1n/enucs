@@ -91,7 +91,7 @@ app.use('/events', events.router);
 
 /** Sponsors */
 const partners = require('./routes/partners/partners');
-app.use('/partners', partners);
+app.use('/partners', partners.router);
 
 /** Merchandise */
 const merch = require('./routes/merch/merch');
