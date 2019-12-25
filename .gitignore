@@ -5,8 +5,10 @@ config/
 
 # Ignore compiled files
 *.css
-database/*.js
-routes/*/*.js
+*.js
+
+# Keep any client side js
+!public/js/*.js
 
 # Created by https://www.gitignore.io/api/node,code,macos
 # Edit at https://www.gitignore.io/?templates=node,code,macos
