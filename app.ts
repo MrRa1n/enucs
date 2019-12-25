@@ -1,17 +1,19 @@
 #!/usr/bin/env nodejs
 
-const express = require('express');
+import express, { Request, Response } from "express";
+
 const path = require('path');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-const database = require('./database/database');
 const logger = require('morgan');
-const token = require('./config/bearerToken');
 const axios = require('axios');
 const log4js = require('log4js');
-const app = express();
 
-const db = new database.default();
+const token = require('./config/bearerToken');
+import Database from './database/database';
+
+const app = express();
+const db = new Database();
 
 /** Configuration for logger. */
 log4js.configure({
@@ -41,16 +43,16 @@ app.set('view engine', 'pug');
 app.use(expressValidator());
 
 /** Index page */
-app.get('/', (_req, res) => {
+app.get('/', (req: Request, res: Response) => {
     LOGGER.info('Fetching tweets...');
-    let tweets = [];
+    let tweets: any[] = [];
     const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
         +'?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
     const bearerToken = 'bearer ' + token.bearerToken();
     const instance = axios({ url: url, headers: { 'Authorization': bearerToken } });
     instance
-        .then((res) => {
-            res.data.forEach(tweet => {
+        .then((res: any) => {
+            res.data.forEach((tweet: any) => {
                 let retrievedTweet = {
                     body: tweet.text,
                     created_at: new Date(tweet.created_at)
@@ -68,15 +70,15 @@ app.get('/', (_req, res) => {
         })
         .then(() => {
             db.getFutureEvents(6).then(events => {
-                events = events.map(event => event.prettifyDates());
+                let displayableEvents = events.map(event => event.prettifyDates());
 
                 res.render('index', {
-                    events: events,
+                    events: displayableEvents,
                     tweets: tweets
                 });
             });
         })
-        .catch((err) => {
+        .catch((err: Error) => {
             console.log(err);
         });
 });

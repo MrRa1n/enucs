@@ -11,11 +11,11 @@ const db = new Database();
  */
 router.get('/', (req: Request, res: Response) => {
     db.getEvents().then(events => {
-        let printableEvents = events.map(event => event.prettifyDates());
+        let displayableEvents = events.map(event => event.prettifyDates());
 
         res.render('events', {
             title: 'Events',
-            events: printableEvents
+            events: displayableEvents
         });
     });
 });
