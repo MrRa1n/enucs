@@ -1,13 +1,12 @@
 #!/usr/bin/env nodejs
 
 import express, { Request, Response } from "express";
-
-const path = require('path');
-const bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
-const logger = require('morgan');
-const axios = require('axios');
-const log4js = require('log4js');
+import path from 'path';
+import bodyParser from 'body-parser';
+import expressValidator from 'express-validator';
+import logger from 'morgan';
+import axios from 'axios';
+import log4js from 'log4js';
 
 const token = require('./config/bearerToken');
 import Database from './database/database';
