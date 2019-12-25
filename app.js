@@ -11,7 +11,7 @@ const axios = require('axios');
 const log4js = require('log4js');
 const app = express();
 
-const db = new database.Database();
+const db = new database.default();
 
 /** Configuration for logger. */
 log4js.configure({
@@ -83,23 +83,23 @@ app.get('/', (_req, res) => {
 
 /** About Us */
 const about = require('./routes/about/about');
-app.use('/about', about);
+app.use('/about', about.router);
 
 /** Events */
 const events = require('./routes/events/events');
-app.use('/events', events);
+app.use('/events', events.router);
 
 /** Sponsors */
 const partners = require('./routes/partners/partners');
-app.use('/partners', partners);
+app.use('/partners', partners.router);
 
 /** Merchandise */
 const merch = require('./routes/merch/merch');
-app.use('/merch', merch);
+app.use('/merch', merch.router);
 
 /** Join Us */
 const join = require('./routes/join/join');
-app.use('/join', join);
+app.use('/join', join.router);
 
 app.listen(3000, () => {
     console.log('Listening on port 3000...');

@@ -13,7 +13,7 @@ type DisplayableEvent = {
     date?: string
 }
 
-export class Event {
+export default class Event {
     title: string;
     start_time: Date;
     end_time: Date;
