@@ -35,6 +35,12 @@ export default class Database {
             .then(res => Event.fromArray(res.rows));
     }
 
+    public async getEventsFor(year: number, term: number): Promise<Event[]>{
+        return this.client
+            .query('SELECT title, start_time, end_time, name AS location_name FROM events JOIN locations ON location_id = locations.id WHERE year_id = $1::integer AND term_id = $2::integer ORDER BY start_time', [year, term])
+            .then(res => Event.fromArray(res.rows));
+    }
+
     public async getYear(shortName: string): Promise<Year> {
         return this.client
             .query('SELECT id, description, short_name FROM years WHERE short_name = $1::text', [shortName])

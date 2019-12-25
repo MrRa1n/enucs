@@ -25,12 +25,22 @@ router.get('/:year(\\d{2}-\\d{2})/:term(tr[1-3])', (req: Request, res: Response)
     let termPromise = db.getTerm(req.params.term);
 
     Promise.all([yearPromise, termPromise]).then(values => {
-        console.log(values);
+        let year = values[0];
+        let term = values[1];
 
-        res.render('events', {
-            title: 'Events',
-            events: []
-        });
+        //Term cannot be incorrect so only validate year
+        if(year === undefined) {
+            res.redirect('/events');
+
+        } else {
+            db.getEventsFor(year.id, term.id).then(events => {
+                let displayableEvents = events.map(event => event.prettifyDates());
+
+                res.render('events', {
+                    events: displayableEvents
+                });
+            });
+        }
     });
 });
 
