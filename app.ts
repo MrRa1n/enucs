@@ -84,23 +84,23 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 /** About Us */
-const about = require('./routes/about/about');
+import about from './routes/about/about';
 app.use('/about', about.router);
 
 /** Events */
-const events = require('./routes/events/events');
+import events from './routes/events/events';
 app.use('/events', events.router);
 
 /** Sponsors */
-const partners = require('./routes/partners/partners');
+import partners from './routes/partners/partners';
 app.use('/partners', partners.router);
 
 /** Merchandise */
-const merch = require('./routes/merch/merch');
+import merch from './routes/merch/merch';
 app.use('/merch', merch.router);
 
 /** Join Us */
-const join = require('./routes/join/join');
+import join from './routes/join/join';
 app.use('/join', join.router);
 
 app.listen(3000, () => {

@@ -6,4 +6,4 @@ router.get('/', (req: Request, res: Response) => {
     res.redirect('https://shop.spreadshirt.co.uk/enucs1/');
 });
 
-export { router };
+export default { router };
