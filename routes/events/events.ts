@@ -20,4 +20,11 @@ router.get('/', (req: Request, res: Response) => {
     });
 });
 
+router.get('/:year(\\d{2}-\\d{2})/:term(tr\\d)', (req: Request, res: Response) => {
+    res.render('events', {
+        title: 'Events',
+        events: []
+    });
+});
+
 export default { router };
