@@ -3,6 +3,12 @@ import { Client, ClientConfig } from 'pg';
 
 import Event from './event';
 
+export type Term = {
+    id: number,
+    description: string,
+    short_name: string
+};
+
 export default class Database {
     private client: Client;
 
@@ -14,14 +20,18 @@ export default class Database {
     public async getEvents(): Promise<Event[]> {
         return this.client
             .query('SELECT title, start_time, end_time, name AS location_name FROM events JOIN locations ON location_id = locations.id ORDER BY start_time')
-            .then(res => Event.fromArray(res.rows))
-            .catch(e => e);
+            .then(res => Event.fromArray(res.rows));
     }
 
     public async getFutureEvents(limit: number): Promise<Event[]> {
         return this.client
             .query("SELECT title, start_time, end_time, name AS location_name FROM events JOIN locations ON location_id = locations.id WHERE end_time >= DATE('now') ORDER BY start_time LIMIT $1::integer", [limit])
-            .then(res => Event.fromArray(res.rows))
-            .catch(e => e);
+            .then(res => Event.fromArray(res.rows));
+    }
+
+    public async getTerm(shortName: string): Promise<Term> {
+        return this.client
+            .query('SELECT id, description, short_name FROM terms WHERE short_name = $1::text', [shortName])
+            .then(res => res.rows[0]);
     }
 }

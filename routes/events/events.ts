@@ -20,10 +20,16 @@ router.get('/', (req: Request, res: Response) => {
     });
 });
 
-router.get('/:year(\\d{2}-\\d{2})/:term(tr\\d)', (req: Request, res: Response) => {
-    res.render('events', {
-        title: 'Events',
-        events: []
+router.get('/:year(\\d{2}-\\d{2})/:term(tr[1-3])', (req: Request, res: Response) => {
+    let termPromise = db.getTerm(req.params.term);
+
+    Promise.all([termPromise]).then(values => {
+        console.log(values);
+        
+        res.render('events', {
+            title: 'Events',
+            events: []
+        });
     });
 });
 
