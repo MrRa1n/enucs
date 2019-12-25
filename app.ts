@@ -5,7 +5,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 import logger from 'morgan';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import log4js from 'log4js';
 
 const token = require('./config/bearerToken');
@@ -41,16 +41,22 @@ app.set('view engine', 'pug');
 // Express Validator Middleware
 app.use(expressValidator());
 
+type Tweet = {
+    body: string,
+    created_at: string,
+    handle: string
+};
+
 /** Index page */
 app.get('/', (req: Request, res: Response) => {
     LOGGER.info('Fetching tweets...');
-    let tweets: any[] = [];
+    let tweets: Tweet[] = [];
     const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
         +'?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
     const bearerToken = 'bearer ' + token.bearerToken();
     const instance = axios({ url: url, headers: { 'Authorization': bearerToken } });
     instance
-        .then((res: any) => {
+        .then((res: AxiosResponse) => {
             res.data.forEach((tweet: any) => {
                 let retrievedTweet = {
                     body: tweet.text,
