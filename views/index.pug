@@ -29,4 +29,6 @@ block content
                                 .event-date= event.date
                             p.event-time #{event.start_time} - #{event.end_time}
                             p.event-location= event.location_name
-            
+
+block scripts
+    script(type='text/javascript', src='/js/tweet-parser.js')
