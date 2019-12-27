@@ -10,12 +10,14 @@ const db = new Database();
  * Fetches list of events from database
  */
 router.get('/', (req: Request, res: Response) => {
-    db.getEvents().then(events => {
-        let displayableEvents = events.map(event => event.prettifyDates());
-
-        res.render('events', {
-            title: 'Events',
-            events: displayableEvents
+    db.getCurrentYearTerm().then(current => {
+        db.getEventsFor(current.year_id, current.term_id).then(events => {
+            let displayableEvents = events.map(event => event.prettifyDates());
+    
+            res.render('events', {
+                title: 'Events',
+                events: displayableEvents
+            });
         });
     });
 });

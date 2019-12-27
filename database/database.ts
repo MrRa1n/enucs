@@ -52,4 +52,10 @@ export default class Database {
             .query('SELECT id, description, short_name FROM terms WHERE short_name = $1::text', [shortName])
             .then(res => res.rows[0]);
     }
+
+    public async getCurrentYearTerm(): Promise<any> {
+        return this.client
+            .query('SELECT year_id, term_id FROM current_year_term')
+            .then(res => res.rows[0]);
+    }
 }
