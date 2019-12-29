@@ -6,19 +6,20 @@ block content
             h1 Events
     form(action="/events" id="eventForm")
         select(name="year" required id="year")
-            option(value="19-20")= "2019/2020"
+            each year in years
+                option(value= year.short_name)= year.description
         select(name="term" required id="term")
             option(value="tr1")= "Trimester 1"
             option(value="tr2")= "Trimester 2"
-            option(value="tr3")= "Trimester 3"
+            //-option(value="tr3")= "Trimester 3"
         button(type="submit") Go
-    h2 Upcoming events
+    h2= specificEvents ? "Events" : "Upcoming events"
     br
     .event-container
-        if !events
-            div(style='width:400px;margin: 0 auto;text-align:center;') Check back soon for more upcoming events
+        if !events || events.length === 0
+            div(style='width:400px;margin: 0 auto;text-align:center;')= specificEvents ? "No events found" : "Check back soon for more upcoming events"
         else
-            each event, i in events
+            each event in events
                 .event-card
                     a(href='#')
                         .event-card-info

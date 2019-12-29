@@ -47,6 +47,12 @@ export default class Database {
             .then(res => res.rows[0]);
     }
 
+    public async getYears(): Promise<Year[]> {
+        return this.client
+            .query('SELECT id, description, short_name FROM years')
+            .then(res => res.rows);
+    }
+
     public async getTerm(shortName: string): Promise<Term> {
         return this.client
             .query('SELECT id, description, short_name FROM terms WHERE short_name = $1::text', [shortName])

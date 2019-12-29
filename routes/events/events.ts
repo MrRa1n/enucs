@@ -10,15 +10,18 @@ const db = new Database();
  * Fetches list of events from database
  */
 router.get('/', async (req: Request, res: Response) => {
+    let years = await db.getYears();
     let current = await db.getCurrentYearTerm();
     let events = await db.getEventsFor(current.year_id, current.term_id);
 
     res.render('events', {
-        events: events.map(event => event.prettifyDates())
+        events: events.map(event => event.prettifyDates()),
+        years: years
     });
 });
 
 router.get('/:year(\\d{2}-\\d{2})/:term(tr[1-3])', async (req: Request, res: Response) => {
+    let years = await db.getYears();
     let year = await db.getYear(req.params.year);
     let term = await db.getTerm(req.params.term);
 
@@ -30,7 +33,9 @@ router.get('/:year(\\d{2}-\\d{2})/:term(tr[1-3])', async (req: Request, res: Res
         let events = await db.getEventsFor(year.id, term.id);
 
         res.render('events', {
-            events: events.map(event => event.prettifyDates())
+            events: events.map(event => event.prettifyDates()),
+            years: years,
+            specificEvents: true
         });
     }
 });
