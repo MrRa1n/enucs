@@ -4,15 +4,6 @@ block content
     .heading-card.events
         .heading-card-content 
             h1 Events
-    form(action="/events" id="eventForm")
-        select(name="year" required id="year")
-            each year in years
-                option(value= year.short_name)= year.description
-        select(name="term" required id="term")
-            option(value="tr1")= "Trimester 1"
-            option(value="tr2")= "Trimester 2"
-            //-option(value="tr3")= "Trimester 3"
-        button(type="submit") Go
     h2= specificEvents ? "Events" : "Upcoming events"
     br
     .event-container
