@@ -9,15 +9,35 @@ const db = new Database();
  * GET mapping for base URL of Events page
  * Fetches list of events from database
  */
-router.get('/', (req: Request, res: Response) => {
-    db.getEvents().then(events => {
-        let displayableEvents = events.map(event => event.prettifyDates());
+router.get('/', async (req: Request, res: Response) => {
+    let years = await db.getYears();
+    let current = await db.getCurrentYearTerm();
+    let events = await db.getEventsFor(current.year_id, current.term_id);
+
+    res.render('events', {
+        events: events.map(event => event.prettifyDates()),
+        years: years
+    });
+});
+
+router.get('/:year(\\d{2}-\\d{2})/:term(tr[1-3])', async (req: Request, res: Response) => {
+    let years = await db.getYears();
+    let year = await db.getYear(req.params.year);
+    let term = await db.getTerm(req.params.term);
+
+    //Term cannot be incorrect so only validate year
+    if(year === undefined) {
+        res.redirect('/events');
+
+    } else {
+        let events = await db.getEventsFor(year.id, term.id);
 
         res.render('events', {
-            title: 'Events',
-            events: displayableEvents
+            events: events.map(event => event.prettifyDates()),
+            years: years,
+            specificEvents: true
         });
-    });
+    }
 });
 
 export default { router };

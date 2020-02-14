@@ -42,51 +42,35 @@ app.set('view engine', 'pug');
 // Express Validator Middleware
 app.use(expressValidator());
 
-type Tweet = {
-    body: string,
-    created_at: string,
-    handle: string
-};
-
 /** Index page */
-app.get('/', (req: Request, res: Response) => {
+app.get('/', async (req: Request, res: Response) => {
     LOGGER.info('Fetching tweets...');
-    let tweets: Tweet[] = [];
     const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
         +'?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
     const bearerToken = 'bearer ' + tokens.twitter;
-    const instance = axios({ url: url, headers: { 'Authorization': bearerToken } });
-    instance
-        .then((res: AxiosResponse) => {
-            res.data.forEach((tweet: any) => {
-                let retrievedTweet = {
-                    body: tweet.text,
-                    created_at: new Date(tweet.created_at)
-                        .toLocaleString('en-GB', {
-                            day: '2-digit',
-                            month: 'short',
-                            year: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit'
-                        }),
-                    handle: tweet.user.screen_name
-                }
-                tweets.push(retrievedTweet);
-            });
-        })
-        .then(() => {
-            db.getFutureEvents(6).then(events => {
-                let displayableEvents = events.map(event => event.prettifyDates());
+    const instance = await axios({ url: url, headers: { 'Authorization': bearerToken } });
 
-                res.render('index', {
-                    events: displayableEvents,
-                    tweets: tweets
-                });
-            });
-        })
-        .catch((err: Error) => {
-            console.log(err);
-        });
+    let tweets = instance.data.map((tweet: any) => {
+        return {
+            body: tweet.text,
+            created_at: new Date(tweet.created_at)
+                .toLocaleString('en-GB', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }),
+            handle: tweet.user.screen_name
+        };
+    });
+
+    let events = await db.getFutureEvents(6);
+
+    res.render('index', {
+        events: events.map(event => event.prettifyDates()),
+        tweets: tweets
+    });
 });
 
 /** About Us */

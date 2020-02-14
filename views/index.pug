@@ -7,7 +7,7 @@ block content
     h2.social-feed-title Latest Tweets
     .twitter-card-container
         if tweets
-            each t, i in tweets
+            each t in tweets
                 .twitter-card
                     span#handle(style='font-size: 16px;text-transform: uppercase;color: #555;')= t.handle
                     i(class='fab fa-twitter' style='float:right;color:#1da1f2;')
@@ -29,4 +29,6 @@ block content
                                 .event-date= event.date
                             p.event-time #{event.start_time} - #{event.end_time}
                             p.event-location= event.location_name
-            
+
+block scripts
+    script(type='text/javascript', src='/js/tweet-parser.js')
