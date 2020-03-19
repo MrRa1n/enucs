@@ -98,9 +98,9 @@ main .main-card {
   height: 300px;
   padding: 50px;
   box-sizing: border-box;
-  background: linear-gradient(45deg, #ffffff 0%, #ffffff 100%);
-  background: -moz-linear-gradient(45deg, #000000 0%, #000000 100%);
-  background: -webkit-linear-gradient(45deg, #000000 0%, #ffffff 100%);
+  background: #c62828;
+  background: #c62828;
+  background: #c62828;
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
