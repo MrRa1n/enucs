@@ -111,9 +111,9 @@ main {
         height: 300px;
         padding: 50px;
         box-sizing: border-box;
-        background: linear-gradient(45deg, $main_card_gradient_high 0%, $main_card_gradient_high 100%);
-        background: -moz-linear-gradient(45deg, $main_card_gradient_low 0%, $main_card_gradient_low 100%);
-        background: -webkit-linear-gradient(45deg, $main_card_gradient_low 0%, $main_card_gradient_high 100%);
+        background: $enucs_red;
+        background: $enucs_red;
+        background: $enucs_red;
         border-radius: 15px;
         display: flex;
         justify-content: space-between;
