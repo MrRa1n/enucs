@@ -1,15 +1,19 @@
 #!/usr/bin/env nodejs
 
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
-const db = require('./config/databaseSetup');
-const logger = require('morgan');
-const token = require('./config/bearerToken');
-const axios = require('axios');
-const log4js = require('log4js');
+import express, { Request, Response } from "express";
+import path from 'path';
+import bodyParser from 'body-parser';
+import expressValidator from 'express-validator';
+import logger from 'morgan';
+import axios, {AxiosResponse} from 'axios';
+import log4js from 'log4js';
+import fs from 'fs';
+
+import Database from './database/database';
+
 const app = express();
+const db = new Database();
+const tokens = JSON.parse(fs.readFileSync('config/tokens.json', 'utf8'));
 
 /** Configuration for logger. */
 log4js.configure({
@@ -22,9 +26,6 @@ log4js.configure({
 
 /** The logger. */
 const LOGGER = log4js.getLogger('default');
-
-/** Initialise the database. */
-db.init();
 
 /** Logger for HTTP requests. */
 app.use(logger('dev'));
@@ -41,17 +42,23 @@ app.set('view engine', 'pug');
 // Express Validator Middleware
 app.use(expressValidator());
 
+type Tweet = {
+    body: string,
+    created_at: string,
+    handle: string
+};
+
 /** Index page */
-app.get('/', (_req, res) => {
+app.get('/', (req: Request, res: Response) => {
     LOGGER.info('Fetching tweets...');
-    let tweets = [];
+    let tweets: Tweet[] = [];
     const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
         +'?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
-    const bearerToken = 'bearer ' + token.bearerToken();
+    const bearerToken = 'bearer ' + tokens.twitter;
     const instance = axios({ url: url, headers: { 'Authorization': bearerToken } });
     instance
-        .then((res) => {
-            res.data.forEach(tweet => {
+        .then((res: AxiosResponse) => {
+            res.data.forEach((tweet: any) => {
                 let retrievedTweet = {
                     body: tweet.text,
                     created_at: new Date(tweet.created_at)
@@ -68,46 +75,39 @@ app.get('/', (_req, res) => {
             });
         })
         .then(() => {
-            db.getFutureEvents(6, (err, rows) => {
-                rows = rows.map((row) => {
-                    row.date = new Date(row.date)
-                        .toLocaleString('en-GB', {
-                            day: '2-digit',
-                            month: 'short',
-                            year: 'numeric' 
-                        });
-                    return row;
-                });
+            db.getFutureEvents(6).then(events => {
+                let displayableEvents = events.map(event => event.prettifyDates());
+
                 res.render('index', {
-                    events: err ? null : rows,
+                    events: displayableEvents,
                     tweets: tweets
                 });
             });
         })
-        .catch((err) => {
+        .catch((err: Error) => {
             console.log(err);
         });
 });
 
 /** About Us */
-const about = require('./routes/about/about');
-app.use('/about', about);
+import about from './routes/about/about';
+app.use('/about', about.router);
 
 /** Events */
-const events = require('./routes/events/events');
-app.use('/events', events);
+import events from './routes/events/events';
+app.use('/events', events.router);
 
 /** Sponsors */
-const partners = require('./routes/partners/partners');
-app.use('/partners', partners);
+import partners from './routes/partners/partners';
+app.use('/partners', partners.router);
 
 /** Merchandise */
-const merch = require('./routes/merch/merch');
-app.use('/merch', merch);
+import merch from './routes/merch/merch';
+app.use('/merch', merch.router);
 
 /** Join Us */
-const join = require('./routes/join/join');
-app.use('/join', join);
+import join from './routes/join/join';
+app.use('/join', join.router);
 
 app.listen(3000, () => {
     console.log('Listening on port 3000...');
