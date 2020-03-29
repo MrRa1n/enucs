@@ -4,14 +4,13 @@ block content
     .heading-card.events
         .heading-card-content 
             h1 Events
-    
-    h2 Upcoming events
+    h2= specificEvents ? "Events" : "Upcoming events"
     br
     .event-container
-        if !events
-            div(style='width:400px;margin: 0 auto;text-align:center;') Check back soon for more upcoming events
+        if !events || events.length === 0
+            div(style='width:400px;margin: 0 auto;text-align:center;')= specificEvents ? "No events found" : "Check back soon for more upcoming events"
         else
-            each event, i in events
+            each event in events
                 .event-card
                     a(href='#')
                         .event-card-info
@@ -22,4 +21,5 @@ block content
                             p.event-time #{event.start_time} - #{event.end_time}
                             p.event-location= event.location_name
             
-
+block scripts
+    script(type='text/javascript', src='/js/event-redirect.js')
