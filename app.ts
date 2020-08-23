@@ -3,9 +3,8 @@
 import express, { Request, Response } from "express";
 import path from 'path';
 import bodyParser from 'body-parser';
-import expressValidator from 'express-validator';
 import logger from 'morgan';
-import axios, {AxiosResponse} from 'axios';
+import axios from 'axios';
 import log4js from 'log4js';
 import fs from 'fs';
 
@@ -39,8 +38,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 /** Set view engine. */
 app.set('view engine', 'pug');
-// Express Validator Middleware
-app.use(expressValidator());
 
 /** Index page */
 app.get('/', async (req: Request, res: Response) => {
