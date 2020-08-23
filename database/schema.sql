@@ -113,6 +113,25 @@ CREATE TABLE public.years (
     short_name text
 );
 
+--
+-- Data for Name: locations; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.locations (id, name) FROM stdin;
+1	???
+\.
+
+
+--
+-- Data for Name: terms; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.terms (id, description, short_name) FROM stdin;
+1	Trimester 1	tr1
+2	Trimester 2	tr2
+3	Trimester 3	tr3
+\.
+
 
 --
 -- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
