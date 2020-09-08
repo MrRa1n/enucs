@@ -111,9 +111,9 @@ main {
         height: 300px;
         padding: 50px;
         box-sizing: border-box;
-        background: $enucs_red;
-        background: $enucs_red;
-        background: $enucs_red;
+        background: linear-gradient(45deg, $join_page_gradient_low 0%, $join_page_gradient_high 100%);
+        background: -moz-linear-gradient(45deg, $button_gradient_low 0%, $button_gradient_high 100%);
+        background: -webkit-linear-gradient(45deg, $button_gradient_low 0%, $button_gradient_high 100%);
         border-radius: 15px;
         display: flex;
         justify-content: space-between;
@@ -309,7 +309,7 @@ label {
 }
 .body-text {
     min-height: 400px;
-    width: 70%;
+    width: 81%;
     font-size: 18px;
     margin: 0 auto;
     line-height: 2em;
@@ -324,7 +324,7 @@ label {
         color:  inherit;
     }
 }
-.committee {
+.committee {    
     display: flex;
     .committee-card  {
         width: 33%;
