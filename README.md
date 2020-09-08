@@ -31,6 +31,6 @@ To update the website on the ENUCS server:
 
 `sudo git pull`
 
-`npm run build`
+`sudo npm run build`
 
 `sudo pm2 restart app`
