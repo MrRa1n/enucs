@@ -1,5 +1,5 @@
 # ENUCS Website
-[![Build Status](https://travis-ci.com/MrRa1n/enucs.svg?token=gys1DHnnbw7by8y6URN7&branch=develop)](https://travis-ci.com/MrRa1n/enucs)  
+[![Build Status](https://travis-ci.com/enucs/enucs.svg?branch=master)](https://travis-ci.com/enucs/enucs)
 
 This is the official repository for the current Edinburgh Napier University Computing Society (ENUCS) website. The website has been built using Node.js with Pug templating engine. The purpose of the website is for enabling users to find information about the society including events, minutes and financials.
 
