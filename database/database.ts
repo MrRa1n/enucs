@@ -3,6 +3,13 @@ import { Client, ClientConfig } from 'pg';
 
 import Event from './event';
 
+export type User = {
+    userid: number,
+    username: string,
+    password: string,
+    sessionid: string
+};
+
 export type Year = {
     id: number,
     description: string,
@@ -21,6 +28,12 @@ export default class Database {
     constructor(config?: ClientConfig) {
         this.client = new Client(config || JSON.parse(fs.readFileSync('config/database.json', 'utf8')));
         this.client.connect();
+    }
+
+    public async getUser(username: string): Promise<User> {
+        return this.client
+            .query('SELECT * FROM users WHERE username = $1::text', [username])
+            .then(res => res.rows[0]);
     }
 
     public async getEvents(): Promise<Event[]> {
