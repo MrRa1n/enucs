@@ -215,6 +215,15 @@ main {
         }
     }
 }
+input[type="text"], input[type="password"] {
+    width: 100%;
+    font-size: inherit;
+    padding: 15px 20px;
+    color: #484848;
+    border: 2px solid #e4e4e4;
+    border-radius: 5px;
+    margin: .5rem 0;
+}
 .btn {
     text-decoration: none;
     padding: 10px 20px;
@@ -242,6 +251,10 @@ main {
     &:hover {
         background: #27a09e;
     }
+}
+.btn-login {
+    // margin-top: 1rem;
+    margin: 1rem auto;
 }
 .form-group {
     display: inline-block;
@@ -386,6 +399,13 @@ footer {
     width: 100px;
     margin: 0 auto;
 }
+.login-container {
+    width: 60%;
+    margin: 0 auto;
+    h1 {
+        margin: 3rem 0 2rem 0;
+    }
+}
 @media only screen and (min-width: 201px) and (max-width: 600px) {
     .container {
         .main-card {
@@ -499,6 +519,7 @@ footer {
         }
     }
 }
+
 /* Desktop Styles */
 @media only screen and (min-width: 1001px) {
     input#menu {

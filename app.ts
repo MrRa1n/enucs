@@ -96,6 +96,10 @@ app.use('/merch', merch.router);
 import join from './routes/join/join';
 app.use('/join', join.router);
 
+/** Admin Login */
+import login from './routes/admin/login/login';
+app.use('/admin/login', login.router);
+
 app.listen(3000, () => {
     console.log('Listening on port 3000...');
 });
