@@ -1,13 +1,22 @@
 #!/usr/bin/env nodejs
 
-import express, { Request, Response } from "express";
-import path from 'path';
-import logger from 'morgan';
 import axios from 'axios';
-import log4js from 'log4js';
+import express, { Request, Response } from "express";
 import fs from 'fs';
-
+import log4js from 'log4js';
+import logger from 'morgan';
+import path from 'path';
 import Database from './database/database';
+
+/** Routes */
+import about from './routes/about/about';
+import dashboard from './routes/admin/dashboard/dashboard';
+import login from './routes/admin/login/login';
+import events from './routes/events/events';
+import join from './routes/join/join';
+import merch from './routes/merch/merch';
+import partners from './routes/partners/partners';
+
 
 const app = express();
 const db = new Database();
@@ -76,29 +85,13 @@ app.get('/', async (req: Request, res: Response) => {
     });
 });
 
-/** About Us */
-import about from './routes/about/about';
 app.use('/about', about.router);
-
-/** Events */
-import events from './routes/events/events';
 app.use('/events', events.router);
-
-/** Sponsors */
-import partners from './routes/partners/partners';
 app.use('/partners', partners.router);
-
-/** Merchandise */
-import merch from './routes/merch/merch';
 app.use('/merch', merch.router);
-
-/** Join Us */
-import join from './routes/join/join';
 app.use('/join', join.router);
-
-/** Admin Login */
-import login from './routes/admin/login/login';
 app.use('/admin/login', login.router);
+app.use('/admin/dashboard', dashboard.router);
 
 app.listen(3000, () => {
     console.log('Listening on port 3000...');
