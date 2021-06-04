@@ -14,6 +14,7 @@ import events from './routes/events/events';
 import join from './routes/join/join';
 import merch from './routes/merch/merch';
 import partners from './routes/partners/partners';
+import committee from './routes/admin/committee/committee';
 import { logger as LOGGER } from './utils/logger';
 
 const app = express();
@@ -76,6 +77,7 @@ app.use('/merch', merch.router);
 app.use('/join', join.router);
 app.use('/', login.router);
 app.use('/admin/dashboard', dashboard.router);
+app.use('/', committee.router);
 
 app.listen(3000, () => {
     LOGGER.info('Listening on port 3000...');
