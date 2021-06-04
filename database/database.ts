@@ -36,6 +36,18 @@ export default class Database {
             .then(res => res.rows[0]);
     }
 
+    public async getSessionId(userId: number): Promise<string> {
+        return this.client
+            .query('SELECT sessionid FROM users where userid = $1::integer', [userId])
+            .then(res => res.rows[0]);
+    }
+
+    public async setSessionId(sessionId: string, userId: number): Promise<void> {
+        return this.client
+            .query('UPDATE users SET sessionid = $1::text WHERE userid = $2::integer', [sessionId, userId])
+            .then(res => res.rows[0]);
+    }
+
     public async getEvents(): Promise<Event[]> {
         return this.client
             .query('SELECT title, start_time, end_time, name AS location_name FROM events JOIN locations ON location_id = locations.id ORDER BY start_time')

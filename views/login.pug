@@ -2,10 +2,10 @@ extends layout
 
 block content
     .body-text
-        .login-container
+        form(method="post", action="/admin/login").login-container
             h1 Login
-            label(for="Username") Username
-            input#username(type="text", name="Username")
-            label(for="Password") Password 
-            input#password(type="password", name="Password")
+            label(for="username") Username
+            input#username(type="text", name="username")
+            label(for="password") Password 
+            input#password(type="password", name="password")
             button.btn.btn-default.btn-login(type="submit") Login
