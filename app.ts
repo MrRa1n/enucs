@@ -1,31 +1,24 @@
 #!/usr/bin/env nodejs
 
-import express, { Request, Response } from "express";
-import path from 'path';
-import logger from 'morgan';
 import axios from 'axios';
-import log4js from 'log4js';
+import express, { Request, Response } from "express";
 import fs from 'fs';
-
+import logger from 'morgan';
+import path from 'path';
 import Database from './database/database';
+/** Routes */
+import about from './routes/about/about';
+import dashboard from './routes/admin/dashboard/dashboard';
+import login from './routes/admin/login/login';
+import events from './routes/events/events';
+import join from './routes/join/join';
+import merch from './routes/merch/merch';
+import partners from './routes/partners/partners';
+import { logger as LOGGER } from './utils/logger';
 
 const app = express();
 const db = new Database();
 const tokens = JSON.parse(fs.readFileSync('config/tokens.json', 'utf8'));
-
-/** Configuration for logger. */
-log4js.configure({
-    appenders: { 
-        errors: { type: 'file', filename: 'enucs.log' },
-        console: { type: 'console' }
-    },
-    categories: { 
-        default: { appenders: ['console', 'errors'], level: 'all' }
-    }
-});
-
-/** The logger. */
-const LOGGER = log4js.getLogger('default');
 
 /** Logger for HTTP requests. */
 app.use(logger('dev'));
@@ -42,7 +35,7 @@ app.set('view engine', 'pug');
 
 /** Index page */
 app.get('/', async (req: Request, res: Response) => {
-    LOGGER.info('Fetching tweets...');
+    LOGGER.info(`[${req.method}] - ${req.path} - Fetching latest tweets`);
     const url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
         +'?screen_name=enucs&exclude_replies=true&include_rts=false&count=3';
     const bearerToken = 'bearer ' + tokens.twitter;
@@ -76,30 +69,14 @@ app.get('/', async (req: Request, res: Response) => {
     });
 });
 
-/** About Us */
-import about from './routes/about/about';
 app.use('/about', about.router);
-
-/** Events */
-import events from './routes/events/events';
 app.use('/events', events.router);
-
-/** Sponsors */
-import partners from './routes/partners/partners';
 app.use('/partners', partners.router);
-
-/** Merchandise */
-import merch from './routes/merch/merch';
 app.use('/merch', merch.router);
-
-/** Join Us */
-import join from './routes/join/join';
 app.use('/join', join.router);
-
-/** Admin Login */
-import login from './routes/admin/login/login';
-app.use('/admin/login', login.router);
+app.use('/', login.router);
+app.use('/admin/dashboard', dashboard.router);
 
 app.listen(3000, () => {
-    console.log('Listening on port 3000...');
+    LOGGER.info('Listening on port 3000...');
 });
