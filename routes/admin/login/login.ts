@@ -3,30 +3,32 @@ import cookie from 'cookie';
 import crypto from 'crypto-random-string';
 import { Request, Response, Router } from "express";
 import Database from "../../../database/database";
-
-// TODO: Add logger
+import { logger } from '../../../utils/logger';
 
 const router = Router();
 const db = new Database();
 
-router.get('/', (req: Request, res: Response) => {
+router.get('/admin/login', (req: Request, res: Response) => {
+    logger.info(`[${req.method}] - ${req.path}`);
     res.render('login', {
         title: 'Login'
     });
 });
 
-router.post('/', (req: Request, res: Response) => {
+router.post('/admin/login', (req: Request, res: Response) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    console.log({ username, password });
+    logger.info(`[${req.method}] - ${req.path} - Logging in user`, username);
 
     db.getUser(username).then(user => {
         bcrypt.compare(password, user.password, (err, same) => {
             if (err) {
+                logger.error(`Error when checking password for ${user.username}`, err);
                 throw err;
             } else if (!same) {
-                throw new Error('Password is incorrect!');
+                logger.error(`Login failed for user ${user.username} - Password incorrect!`);
+                throw new Error('Passwords do not match!');
             } else {
                 req.app.locals.userid = user.userid;
                 req.app.locals.user = username;
@@ -42,15 +44,19 @@ router.post('/', (req: Request, res: Response) => {
                 }));
 
                 db.setSessionId(sessionId, user.userid)
-                    .then(() => res.redirect('/admin/dashboard'))
+                    .then(() => {
+                        logger.info(`User ${user.username} logged in successfully`);
+                        res.redirect('/admin/dashboard');
+                    })
                     .catch(err => {
-                        console.error(err);
+                        logger.error(`Failed to set session ID for ${user.username}`);
                         res.status(500).send(err)
                     });
             }
         });
     }, err => {
-        console.error(err);
+        logger.error(`Error when fetching user ${username}`, err);
+        return;
     })
 });
 
