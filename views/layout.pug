@@ -28,13 +28,14 @@ html(lang='en')
                         a(href='/merch/') Merch
                     li.navbar-link-item.navbar-btn
                         a(href='/join/') Join
-        .admin-nav
-            .container 
-                ul.navbar-links
-                    li.navbar-link-item
-                        a(href='/admin/dashboard') Dashboard
-                    li.navbar-link-item
-                        a(href='/admin/logout') Logout
+        if authorised            
+            .admin-nav
+                .container 
+                    ul.navbar-links
+                        li.navbar-link-item
+                            a(href='/admin/dashboard') Dashboard
+                        li.navbar-link-item
+                            a(href='/admin/logout') Logout
 
                     
         .container

@@ -60,4 +60,25 @@ router.post('/admin/login', (req: Request, res: Response) => {
     })
 });
 
+router.get('/admin/logout', (req: Request, res: Response) => {
+    logger.info(`[${req.method}] - ${req.path} - Logging out user`, req.app.locals.user);
+    db.getSessionId(req.app.locals.userid).then((sessionId: string) => {
+        res.setHeader('Set-Cookie', cookie.serialize('SESSIONID', sessionId, {
+            maxAge: 0,
+            httpOnly: true,
+            path: '/',
+            sameSite: 'strict'
+        }));
+    })
+    .then(() => {
+        logger.info(`User ${req.app.locals.user} logged out successfully`);
+        req.app.locals.authorised = false;
+        res.redirect('/admin/login');
+    })
+    .catch(err => {
+        logger.error(`Failed to logout user ${req.app.locals.user}`, err);
+        res.status(500).send(err);
+    });
+});
+
 export default { router };
