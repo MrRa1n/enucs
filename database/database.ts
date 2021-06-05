@@ -2,6 +2,7 @@ import fs from 'fs';
 import { Client, ClientConfig } from 'pg';
 
 import Event from './event';
+import CommitteeMember from '../models/committee-member';
 
 export type User = {
     userid: number,
@@ -88,5 +89,11 @@ export default class Database {
         return this.client
             .query('SELECT year_id, term_id FROM current_year_term')
             .then(res => res.rows[0]);
+    }
+
+    public async getCommittee(): Promise<CommitteeMember[]> {
+        return this.client
+            .query('SELECT c.id, first_name, last_name, r.name as role_name, image_url, member_since, twitter_url, github_url from committee c join roles r on c.role_id=r.id')
+            .then(res => CommitteeMember.fromArray(res.rows));
     }
 }
