@@ -1,4 +1,9 @@
 extends layout 
 
+include components/committee-card
+
 block content 
     h1= title
+    br
+    each member in committee
+        +committeeMemberItem (member)

@@ -1,0 +1,10 @@
+mixin committeeMemberItem (member)
+    .committee-member-card
+        img(src=member.image_url).member-image
+        .member-info
+            h2 #{member.first_name} #{member.last_name}
+            span= member.role_name
+        .member-actions
+            button.btn.btn-default Edit
+            | &nbsp;
+            button.btn.btn-danger Delete
