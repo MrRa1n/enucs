@@ -328,6 +328,15 @@ input[type="text"], input[type="password"] {
         background: #27a09e;
     }
 }
+.btn-danger {
+    color: #FFF !important;
+    background: linear-gradient(45deg, #952424 0%, #e72626 100%);
+    background: -moz-linear-gradient(45deg, #952424 0%, #e72626 100%);
+    background: -webkit-linear-gradient(45deg, #952424 0%, #e72626 100%);
+    &:hover {
+        background: #952424;
+    }
+}
 .btn-login {
     // margin-top: 1rem;
     margin: 1rem auto;
@@ -482,6 +491,32 @@ footer {
         margin: 3rem 0 2rem 0;
     }
 }
+
+.committee-member-card {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px 0px rgba(194, 194, 194, 0.75);
+    border: 1px solid #e4e4e4;
+    display: flex;
+    align-items: center;
+    .member-info {
+        padding: 0 1rem;
+        span {
+            font-size: 1rem;
+        }
+    }
+    .member-since {
+        margin-left: auto;
+    }
+    .member-image {
+        border-radius: 50%;
+    }
+    .member-actions {
+        margin-left: auto;
+    }
+}
+
 @media only screen and (min-width: 201px) and (max-width: 600px) {
     .container {
         .main-card {
